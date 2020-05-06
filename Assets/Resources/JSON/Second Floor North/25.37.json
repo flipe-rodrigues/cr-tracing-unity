@@ -1,0 +1,9 @@
+{"db_id":"r180",
+	
+	"id":"25.37",
+	"label":"Leopoldo's Office",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":18,"y":0,"z":2},
+	"dimensions":{"x":2,"y":3}
+}

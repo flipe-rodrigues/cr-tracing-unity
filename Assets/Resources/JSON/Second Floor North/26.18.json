@@ -1,0 +1,9 @@
+{"db_id":"r191",
+	
+	"id":"26.18",
+	"label":"Thermal Cycler / Small Centrifuge",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":16,"y":-15,"z":2},
+	"dimensions":{"x":2,"y":2}
+}

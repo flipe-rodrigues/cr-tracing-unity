@@ -1,0 +1,9 @@
+{"db_id":"r14",
+	
+	"id":"15.02",
+	"label":"Mindreach",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":30,"y":0,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

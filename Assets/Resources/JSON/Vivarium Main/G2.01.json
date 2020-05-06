@@ -1,0 +1,9 @@
+{"db_id":"r213",
+	
+	"id":"G2.01",
+	"label":"Main Vivarium Admin",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":45,"y":-14,"z":-1},
+	"dimensions":{"x":3,"y":5}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r90",
+	
+	"id":"18.58",
+	"label":"Noam's Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-22,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

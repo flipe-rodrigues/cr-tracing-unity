@@ -1,0 +1,9 @@
+{"db_id":"r189",
+	
+	"id":"26.09",
+	"label":"Microscopy Core",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":13,"y":-10,"z":2},
+	"dimensions":{"x":5,"y":2}
+}

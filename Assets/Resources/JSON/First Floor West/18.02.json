@@ -1,0 +1,9 @@
+{"db_id":"r62",
+	
+	"id":"18.02",
+	"label":"Data",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":18,"y":-9,"z":1},
+	"dimensions":{"x":3,"y":3}
+}

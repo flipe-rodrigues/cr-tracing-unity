@@ -1,0 +1,9 @@
+{"db_id":"r106",
+	
+	"id":"19.15.4",
+	"label":"Joao Benches",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":19,"y":-23,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

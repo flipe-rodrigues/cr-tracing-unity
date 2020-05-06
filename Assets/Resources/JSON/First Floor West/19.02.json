@@ -1,0 +1,9 @@
+{"db_id":"r94",
+	
+	"id":"19.02",
+	"label":"Portuguese/English Lessons",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-26,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r59",
+	
+	"id":"16.36",
+	"label":"Kitchen 16.36",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":0,"y":0,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

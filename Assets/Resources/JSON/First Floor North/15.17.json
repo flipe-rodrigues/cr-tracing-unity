@@ -1,0 +1,9 @@
+{"db_id":"r29",
+	
+	"id":"15.17",
+	"label":"Histopathology",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":26,"y":-12,"z":1},
+	"dimensions":{"x":4,"y":3}
+}

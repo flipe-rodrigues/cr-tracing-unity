@@ -1,0 +1,9 @@
+{"db_id":"r36",
+	
+	"id":"15.33",
+	"label":"Neuropsychiatry experimental room",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":18,"y":-10,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

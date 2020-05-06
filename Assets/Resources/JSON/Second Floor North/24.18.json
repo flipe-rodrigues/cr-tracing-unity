@@ -1,0 +1,9 @@
+{"db_id":"r136",
+	
+	"id":"24.18",
+	"label":"Slice Prep",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":37,"y":-14,"z":2},
+	"dimensions":{"x":3,"y":1}
+}

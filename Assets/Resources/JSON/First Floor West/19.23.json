@@ -1,0 +1,9 @@
+{"db_id":"r110",
+	
+	"id":"19.23",
+	"label":"Neuropsychiatry",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":7,"y":-27,"z":1},
+	"dimensions":{"x":5,"y":3}
+}

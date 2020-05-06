@@ -1,0 +1,9 @@
+{"db_id":"r50",
+	
+	"id":"16.19",
+	"label":"Odyssey, Nanosight, cytometer, plate reader (16.19)",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":14,"y":-15,"z":1},
+	"dimensions":{"x":2,"y":2}
+}

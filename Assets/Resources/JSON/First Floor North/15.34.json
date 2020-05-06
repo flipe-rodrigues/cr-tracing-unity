@@ -1,0 +1,9 @@
+{"db_id":"r37",
+	
+	"id":"15.34",
+	"label":"Meeting room",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":18,"y":-7,"z":1},
+	"dimensions":{"x":4,"y":3}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r13",
+	
+	"id":"15.01",
+	"label":"Software Platform",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":32,"y":0,"z":1},
+	"dimensions":{"x":2,"y":4}
+}

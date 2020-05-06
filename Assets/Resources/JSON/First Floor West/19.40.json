@@ -1,0 +1,9 @@
+{"db_id":"r120",
+	
+	"id":"19.40",
+	"label":"Room 19.40",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":15,"y":-35,"z":1},
+	"dimensions":{"x":3,"y":1}
+}

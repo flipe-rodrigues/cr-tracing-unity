@@ -1,0 +1,9 @@
+{"db_id":"r100",
+	
+	"id":"19.12",
+	"label":"Injection Room",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":12,"y":-20,"z":1},
+	"dimensions":{"x":4,"y":5}
+}

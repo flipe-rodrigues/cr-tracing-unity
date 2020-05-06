@@ -1,0 +1,9 @@
+{"db_id":"r167",
+	
+	"id":"25.11.9",
+	"label":"Ribeiro Benches",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":34,"y":-19,"z":2},
+	"dimensions":{"x":2,"y":4}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r125",
+	
+	"id":"24.04",
+	"label":"CR Direction Room",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":38,"y":0,"z":2},
+	"dimensions":{"x":2,"y":3}
+}

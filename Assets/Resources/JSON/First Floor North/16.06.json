@@ -1,0 +1,9 @@
+{"db_id":"r45",
+	
+	"id":"16.06",
+	"label":"Bruno's Office",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":4,"y":0,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

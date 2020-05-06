@@ -1,0 +1,9 @@
+{"db_id":"r140",
+	
+	"id":"24.23",
+	"label":"Amira Computer / Storage",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":44,"y":-15,"z":2},
+	"dimensions":{"x":2,"y":2}
+}

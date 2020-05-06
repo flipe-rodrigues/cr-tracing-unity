@@ -1,0 +1,9 @@
+{"db_id":"r85",
+	
+	"id":"18.49",
+	"label":"Tissue Culture Room 18.49",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":16,"y":-18,"z":1},
+	"dimensions":{"x":2,"y":2}
+}

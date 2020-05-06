@@ -1,0 +1,9 @@
+{"db_id":"r1",
+	
+	"id":"14.02",
+	"label":"Room 14.02",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":42,"y":0,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r175",
+	
+	"id":"25.28",
+	"label":"Orbital Shakers / Centrifuges / Nanodrop",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":18,"y":-13,"z":2},
+	"dimensions":{"x":5,"y":2}
+}

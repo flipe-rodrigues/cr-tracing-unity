@@ -1,0 +1,9 @@
+{"db_id":"r262",
+	
+	"id":"G2.52",
+	"label":"Surgery G2.52",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":18,"y":-8,"z":-1},
+	"dimensions":{"x":2,"y":2}
+}

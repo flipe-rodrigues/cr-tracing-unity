@@ -1,0 +1,9 @@
+{"db_id":"r199",
+	
+	"id":"26.34",
+	"label":"Theoretical Neuroscience Office",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":8,"y":-7,"z":2},
+	"dimensions":{"x":3,"y":3}
+}

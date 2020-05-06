@@ -1,0 +1,9 @@
+{"db_id":"r43",
+	
+	"id":"16.04",
+	"label":"Hardware Platform",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":8,"y":0,"z":1},
+	"dimensions":{"x":2,"y":4}
+}

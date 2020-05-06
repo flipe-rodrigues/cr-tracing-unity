@@ -1,0 +1,9 @@
+{"db_id":"r176",
+	
+	"id":"25.29",
+	"label":"Cold Room",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":20,"y":-12,"z":2},
+	"dimensions":{"x":3,"y":1}
+}

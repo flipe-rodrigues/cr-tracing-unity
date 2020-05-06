@@ -1,0 +1,9 @@
+{"db_id":"r155",
+	
+	"id":"25.11.0",
+	"label":"Machens Benches",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":7,"y":-19,"z":2},
+	"dimensions":{"x":2,"y":4}
+}

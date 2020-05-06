@@ -1,0 +1,9 @@
+{"db_id":"r301",
+	
+	"id":"14.21",
+	"label":"Room 14.21",
+	"type":"Room",
+	"map":"Vivarium Satellite",
+	"position":{"x":8,"y":-8,"z":1},
+	"dimensions":{"x":6,"y":6}
+}

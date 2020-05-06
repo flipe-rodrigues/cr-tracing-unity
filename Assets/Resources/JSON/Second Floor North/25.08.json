@@ -1,0 +1,9 @@
+{"db_id":"r153",
+	
+	"id":"25.08",
+	"label":"Meetings Room 25.08",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":25,"y":-7,"z":2},
+	"dimensions":{"x":5,"y":3}
+}

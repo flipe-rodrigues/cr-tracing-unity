@@ -1,0 +1,9 @@
+{"db_id":"r77",
+	
+	"id":"18.35",
+	"label":"Zach's Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-14,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r114",
+	
+	"id":"19.27",
+	"label":"Macroscopic / Processing",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":14,"y":-30,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

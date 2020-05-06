@@ -1,0 +1,9 @@
+{"db_id":"r64",
+	
+	"id":"18.09",
+	"label":"Fly Room",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":0,"z":1},
+	"dimensions":{"x":5,"y":8}
+}

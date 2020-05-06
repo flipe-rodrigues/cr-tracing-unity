@@ -1,0 +1,9 @@
+{"db_id":"r82",
+	
+	"id":"18.46",
+	"label":"Medical Transfusion Service",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":10,"y":-15,"z":1},
+	"dimensions":{"x":2,"y":5}
+}

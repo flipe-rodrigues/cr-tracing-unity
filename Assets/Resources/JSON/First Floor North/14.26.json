@@ -1,0 +1,9 @@
+{"db_id":"r7",
+	
+	"id":"14.26",
+	"label":"Chemical Hood and Gel Run (14.26)",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":32,"y":-15,"z":1},
+	"dimensions":{"x":2,"y":2}
+}

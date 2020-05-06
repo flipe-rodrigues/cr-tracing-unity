@@ -1,0 +1,9 @@
+{"db_id":"r238",
+	
+	"id":"G2.27",
+	"label":"Storage G2.27",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":17,"y":-16,"z":-1},
+	"dimensions":{"x":3,"y":2}
+}

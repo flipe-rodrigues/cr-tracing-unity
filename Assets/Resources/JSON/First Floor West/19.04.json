@@ -1,0 +1,9 @@
+{"db_id":"r96",
+	
+	"id":"19.04",
+	"label":"Antonio's Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-30,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

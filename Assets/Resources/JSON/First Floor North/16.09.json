@@ -1,0 +1,9 @@
+{"db_id":"r47",
+	
+	"id":"16.09",
+	"label":"Microscopes (16.09)",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":14,"y":-10,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

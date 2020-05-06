@@ -1,0 +1,9 @@
+{"db_id":"r292",
+	
+	"id":"G2.85",
+	"label":"Clean Cage Storage G2.85",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":37,"y":-10,"z":-1},
+	"dimensions":{"x":7,"y":4}
+}

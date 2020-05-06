@@ -1,0 +1,9 @@
+{"db_id":"r88",
+	
+	"id":"18.56",
+	"label":"Nickolas' Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-18,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

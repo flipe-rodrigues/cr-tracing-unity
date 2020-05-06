@@ -1,0 +1,9 @@
+{"db_id":"r296",
+	
+	"id":"14.12",
+	"label":"Corridor",
+	"type":"Access",
+	"map":"Vivarium Satellite",
+	"position":{"x":8,"y":0,"z":1},
+	"dimensions":{"x":3,"y":3}
+}

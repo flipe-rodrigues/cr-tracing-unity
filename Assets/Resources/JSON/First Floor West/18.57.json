@@ -1,0 +1,9 @@
+{"db_id":"r89",
+	
+	"id":"18.57",
+	"label":"Celso's Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-20,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

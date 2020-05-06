@@ -1,0 +1,9 @@
+{"db_id":"r142",
+	
+	"id":"24.26",
+	"label":"Scales, Milli-Q, Hotte",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":32,"y":-15,"z":2},
+	"dimensions":{"x":2,"y":2}
+}

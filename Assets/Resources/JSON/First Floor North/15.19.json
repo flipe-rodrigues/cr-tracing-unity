@@ -1,0 +1,9 @@
+{"db_id":"r31",
+	
+	"id":"15.19",
+	"label":"RNA Room, Sonicator (15.19)",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":26,"y":-15,"z":1},
+	"dimensions":{"x":2,"y":2}
+}

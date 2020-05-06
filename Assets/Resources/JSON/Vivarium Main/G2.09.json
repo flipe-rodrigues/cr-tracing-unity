@@ -1,0 +1,9 @@
+{"db_id":"r219",
+	
+	"id":"G2.09",
+	"label":"Women's Locker Room",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":39,"y":-14,"z":-1},
+	"dimensions":{"x":5,"y":2}
+}

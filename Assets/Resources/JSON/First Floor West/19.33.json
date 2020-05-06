@@ -1,0 +1,9 @@
+{"db_id":"r117",
+	
+	"id":"19.33",
+	"label":"Anatomic Pathology Lab",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":18,"y":-30,"z":1},
+	"dimensions":{"x":6,"y":7}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r5",
+	
+	"id":"14.07",
+	"label":"Corridor",
+	"type":"Access",
+	"map":"First Floor North",
+	"position":{"x":35,"y":-7,"z":1},
+	"dimensions":{"x":2,"y":5}
+}

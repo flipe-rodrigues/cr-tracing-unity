@@ -1,0 +1,9 @@
+{"db_id":"r232",
+	
+	"id":"G2.21",
+	"label":"G2.21",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":26,"y":-16,"z":-1},
+	"dimensions":{"x":3,"y":2}
+}

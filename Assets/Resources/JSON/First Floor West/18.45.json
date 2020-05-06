@@ -1,0 +1,9 @@
+{"db_id":"r81",
+	
+	"id":"18.45",
+	"label":"Emergency Freezer",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":8,"y":-15,"z":1},
+	"dimensions":{"x":2,"y":5}
+}

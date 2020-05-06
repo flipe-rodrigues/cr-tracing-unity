@@ -1,0 +1,9 @@
+{"db_id":"r111",
+	
+	"id":"19.24",
+	"label":"Preclinical MRI",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":7,"y":-30,"z":1},
+	"dimensions":{"x":5,"y":2}
+}

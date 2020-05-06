@@ -1,0 +1,9 @@
+{"db_id":"r303",
+	
+	"id":"Elev5",
+	"label":"Elevator",
+	"type":"Access",
+	"map":"Vivarium Satellite",
+	"position":{"x":11,"y":0,"z":1},
+	"dimensions":{"x":3,"y":3}
+}

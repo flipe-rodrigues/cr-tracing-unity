@@ -1,0 +1,9 @@
+{"db_id":"r69",
+	
+	"id":"18.21",
+	"label":"Behavior 18.21",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":14,"y":-4,"z":1},
+	"dimensions":{"x":2,"y":2}
+}

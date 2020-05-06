@@ -1,0 +1,9 @@
+{"db_id":"r41",
+	
+	"id":"16.02",
+	"label":"Direction Support Team",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":14,"y":0,"z":1},
+	"dimensions":{"x":2,"y":4}
+}

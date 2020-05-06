@@ -1,0 +1,9 @@
+{"db_id":"r260",
+	
+	"id":"G2.50",
+	"label":"Vet. Lab G2.50",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":18,"y":-11,"z":-1},
+	"dimensions":{"x":2,"y":2}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r19",
+	
+	"id":"15.09",
+	"label":"Lightsheet Microscope",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":26,"y":-10,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

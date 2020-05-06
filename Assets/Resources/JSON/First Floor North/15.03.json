@@ -1,0 +1,9 @@
+{"db_id":"r15",
+	
+	"id":"15.03",
+	"label":"ABBE Platform",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":28,"y":0,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

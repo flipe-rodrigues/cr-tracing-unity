@@ -1,0 +1,9 @@
+{"db_id":"r126",
+	
+	"id":"24.05",
+	"label":"Systems Neuro Office",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":36,"y":0,"z":2},
+	"dimensions":{"x":2,"y":3}
+}

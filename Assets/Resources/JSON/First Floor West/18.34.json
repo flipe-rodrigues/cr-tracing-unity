@@ -1,0 +1,9 @@
+{"db_id":"r76",
+	
+	"id":"18.34",
+	"label":"Eduardo's Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-12,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

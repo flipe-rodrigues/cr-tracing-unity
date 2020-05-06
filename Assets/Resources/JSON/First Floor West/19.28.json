@@ -1,0 +1,9 @@
+{"db_id":"r115",
+	
+	"id":"19.28",
+	"label":"Chemical Hood",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":16,"y":-28,"z":1},
+	"dimensions":{"x":2,"y":2}
+}

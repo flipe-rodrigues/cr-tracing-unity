@@ -1,0 +1,9 @@
+{"db_id":"r156",
+	
+	"id":"25.11.1",
+	"label":"Petreanu Benches",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":10,"y":-19,"z":2},
+	"dimensions":{"x":2,"y":4}
+}

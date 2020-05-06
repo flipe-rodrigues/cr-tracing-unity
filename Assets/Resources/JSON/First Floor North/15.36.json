@@ -1,0 +1,9 @@
+{"db_id":"r38",
+	
+	"id":"15.36",
+	"label":"Neuropsychiatry",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":20,"y":0,"z":1},
+	"dimensions":{"x":2,"y":4}
+}

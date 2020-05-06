@@ -1,0 +1,9 @@
+{"db_id":"r39",
+	
+	"id":"15.37",
+	"label":"Adriana's Office",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":18,"y":0,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

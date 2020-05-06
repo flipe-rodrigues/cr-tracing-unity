@@ -1,0 +1,9 @@
+{"db_id":"r66",
+	
+	"id":"18.13",
+	"label":"Env Chamber 18.13 and 18.14",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":7,"y":-2,"z":1},
+	"dimensions":{"x":5,"y":4}
+}

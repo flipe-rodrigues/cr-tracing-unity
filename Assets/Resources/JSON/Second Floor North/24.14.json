@@ -1,0 +1,9 @@
+{"db_id":"r134",
+	
+	"id":"24.14",
+	"label":"Electronic Workshop",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":44,"y":-9,"z":2},
+	"dimensions":{"x":2,"y":3}
+}

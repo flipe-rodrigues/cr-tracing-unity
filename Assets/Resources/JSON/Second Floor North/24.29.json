@@ -1,0 +1,9 @@
+{"db_id":"r145",
+	
+	"id":"24.29",
+	"label":"In Vitro Physiology",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":31,"y":-12,"z":2},
+	"dimensions":{"x":4,"y":2}
+}

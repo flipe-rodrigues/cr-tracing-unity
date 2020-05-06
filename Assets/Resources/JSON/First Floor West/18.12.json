@@ -1,0 +1,9 @@
+{"db_id":"r65",
+	
+	"id":"18.12",
+	"label":"Dissection",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":7,"y":0,"z":1},
+	"dimensions":{"x":5,"y":2}
+}

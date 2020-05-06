@@ -1,0 +1,9 @@
+{"db_id":"r23",
+	
+	"id":"15.11.4",
+	"label":"Costa Silva Benches",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":19,"y":-19,"z":1},
+	"dimensions":{"x":2,"y":4}
+}

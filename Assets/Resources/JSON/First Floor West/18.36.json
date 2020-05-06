@@ -1,0 +1,9 @@
+{"db_id":"r78",
+	
+	"id":"18.36",
+	"label":"Cold Room",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":7,"y":-9,"z":1},
+	"dimensions":{"x":5,"y":3}
+}

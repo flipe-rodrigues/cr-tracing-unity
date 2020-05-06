@@ -1,0 +1,9 @@
+{"db_id":"r210",
+	
+	"id":"4",
+	"label":"Stairs",
+	"type":"Access",
+	"map":"Vivarium Main",
+	"position":{"x":17,"y":-14,"z":-1},
+	"dimensions":{"x":3,"y":2}
+}

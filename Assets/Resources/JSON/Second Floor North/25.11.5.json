@@ -1,0 +1,9 @@
+{"db_id":"r163",
+	
+	"id":"25.11.5",
+	"label":"Orger Benches",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":22,"y":-19,"z":2},
+	"dimensions":{"x":2,"y":4}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r182",
+	
+	"id":"26.02",
+	"label":"Carlos's Office",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":14,"y":0,"z":2},
+	"dimensions":{"x":2,"y":3}
+}

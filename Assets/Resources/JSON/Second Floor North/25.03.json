@@ -1,0 +1,9 @@
+{"db_id":"r150",
+	
+	"id":"25.03",
+	"label":"Megan's Office",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":28,"y":0,"z":2},
+	"dimensions":{"x":2,"y":3}
+}

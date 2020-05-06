@@ -1,0 +1,9 @@
+{"db_id":"r204",
+	
+	"id":"26.42",
+	"label":"Room 26.42",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":4,"y":-15,"z":2},
+	"dimensions":{"x":2,"y":2}
+}

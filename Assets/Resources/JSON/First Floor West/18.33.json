@@ -1,0 +1,9 @@
+{"db_id":"r75",
+	
+	"id":"18.33",
+	"label":"Henrique's Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-10,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r93",
+	
+	"id":"19.01",
+	"label":"Amjad's Office",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":2,"y":-24,"z":1},
+	"dimensions":{"x":3,"y":2}
+}

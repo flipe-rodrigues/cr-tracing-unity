@@ -1,0 +1,9 @@
+{"db_id":"r103",
+	
+	"id":"19.15.1",
+	"label":"Maeurer Benches",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":19,"y":-14,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

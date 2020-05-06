@@ -1,0 +1,9 @@
+{"db_id":"r83",
+	
+	"id":"18.47",
+	"label":"Fly Platform",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":12,"y":-15,"z":1},
+	"dimensions":{"x":2,"y":5}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r218",
+	
+	"id":"G2.08",
+	"label":"Corridor",
+	"type":"Access",
+	"map":"Vivarium Main",
+	"position":{"x":39,"y":-16,"z":-1},
+	"dimensions":{"x":6,"y":3}
+}

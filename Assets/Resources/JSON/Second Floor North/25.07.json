@@ -1,0 +1,9 @@
+{"db_id":"r152",
+	
+	"id":"25.07",
+	"label":"Corridor",
+	"type":"Access",
+	"map":"Second Floor North",
+	"position":{"x":23,"y":-7,"z":2},
+	"dimensions":{"x":2,"y":8}
+}

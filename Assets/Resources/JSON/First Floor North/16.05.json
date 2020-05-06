@@ -1,0 +1,9 @@
+{"db_id":"r44",
+	
+	"id":"16.05",
+	"label":"Christa's Office",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":6,"y":0,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r42",
+	
+	"id":"16.03",
+	"label":"Lab Admin Office",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":10,"y":0,"z":1},
+	"dimensions":{"x":4,"y":3}
+}

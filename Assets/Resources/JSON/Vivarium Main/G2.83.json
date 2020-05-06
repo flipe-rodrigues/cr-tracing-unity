@@ -1,0 +1,9 @@
+{"db_id":"r291",
+	
+	"id":"G2.83",
+	"label":"Cagewash G2.83 G2.84",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":37,"y":-4,"z":-1},
+	"dimensions":{"x":7,"y":6}
+}

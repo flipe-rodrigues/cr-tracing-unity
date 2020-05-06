@@ -1,0 +1,9 @@
+{"db_id":"r57",
+	
+	"id":"16.34",
+	"label":"Hardware platform",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":8,"y":-7,"z":1},
+	"dimensions":{"x":2,"y":3}
+}

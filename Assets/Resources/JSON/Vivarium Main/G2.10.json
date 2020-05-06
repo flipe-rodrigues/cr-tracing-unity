@@ -1,0 +1,9 @@
+{"db_id":"r220",
+	
+	"id":"G2.10",
+	"label":"Mens's Locker Room",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":39,"y":-19,"z":-1},
+	"dimensions":{"x":5,"y":2}
+}

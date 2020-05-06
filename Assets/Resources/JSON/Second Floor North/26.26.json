@@ -1,0 +1,9 @@
+{"db_id":"r194",
+	
+	"id":"26.26",
+	"label":"Ice Machine / Dry ice / Freezers",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":8,"y":-15,"z":2},
+	"dimensions":{"x":2,"y":2}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r165",
+	
+	"id":"25.11.7",
+	"label":"Carey Benches",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":28,"y":-19,"z":2},
+	"dimensions":{"x":2,"y":4}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r158",
+	
+	"id":"25.11.11",
+	"label":"Mainen Benches",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":40,"y":-19,"z":2},
+	"dimensions":{"x":2,"y":4}
+}

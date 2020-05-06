@@ -1,0 +1,9 @@
+{"db_id":"r104",
+	
+	"id":"19.15.2",
+	"label":"Shemesh Benches",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":19,"y":-17,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

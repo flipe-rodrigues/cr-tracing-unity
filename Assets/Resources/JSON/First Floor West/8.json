@@ -1,0 +1,9 @@
+{"db_id":"r121",
+	
+	"id":"8",
+	"label":"Stairs",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":12,"y":-33,"z":1},
+	"dimensions":{"x":5,"y":2}
+}

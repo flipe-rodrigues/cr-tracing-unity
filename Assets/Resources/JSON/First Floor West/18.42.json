@@ -1,0 +1,9 @@
+{"db_id":"r79",
+	
+	"id":"18.42",
+	"label":"Corridor",
+	"type":"Access",
+	"map":"First Floor West",
+	"position":{"x":12,"y":-13,"z":1},
+	"dimensions":{"x":6,"y":2}
+}

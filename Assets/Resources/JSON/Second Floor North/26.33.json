@@ -1,0 +1,9 @@
+{"db_id":"r198",
+	
+	"id":"26.33",
+	"label":"Fly dissection",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":6,"y":-10,"z":2},
+	"dimensions":{"x":5,"y":2}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r154",
+	
+	"id":"25.09",
+	"label":"Clarity Room",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":25,"y":-10,"z":2},
+	"dimensions":{"x":5,"y":2}
+}

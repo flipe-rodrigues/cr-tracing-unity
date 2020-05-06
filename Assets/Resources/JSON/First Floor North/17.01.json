@@ -1,0 +1,9 @@
+{"db_id":"r61",
+	
+	"id":"17.01",
+	"label":"Library",
+	"type":"Access",
+	"map":"First Floor North",
+	"position":{"x":0,"y":-10,"z":1},
+	"dimensions":{"x":6,"y":5}
+}

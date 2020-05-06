@@ -1,0 +1,9 @@
+{"db_id":"r280",
+	
+	"id":"G2.65",
+	"label":"Testing G2.65",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":6,"y":-16,"z":-1},
+	"dimensions":{"x":2,"y":2}
+}

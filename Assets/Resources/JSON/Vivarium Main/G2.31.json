@@ -1,0 +1,9 @@
+{"db_id":"r240",
+	
+	"id":"G2.31",
+	"label":"Clean Corridor",
+	"type":"Access",
+	"map":"Vivarium Main",
+	"position":{"x":6,"y":-13,"z":-1},
+	"dimensions":{"x":8,"y":1}
+}

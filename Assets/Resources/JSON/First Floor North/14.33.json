@@ -1,0 +1,9 @@
+{"db_id":"r11",
+	
+	"id":"14.33",
+	"label":"Glassware and Media Platform",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":30,"y":-10,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

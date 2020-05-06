@@ -1,0 +1,9 @@
+{"db_id":"r225",
+	
+	"id":"G2.15A",
+	"label":"Quarantine G2.15A",
+	"type":"Room",
+	"map":"Vivarium Main",
+	"position":{"x":32,"y":-16,"z":-1},
+	"dimensions":{"x":2,"y":2}
+}

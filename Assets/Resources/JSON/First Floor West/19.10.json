@@ -1,0 +1,9 @@
+{"db_id":"r98",
+	
+	"id":"19.10",
+	"label":"EARCS",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":7,"y":-20,"z":1},
+	"dimensions":{"x":3,"y":4}
+}

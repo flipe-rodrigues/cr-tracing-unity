@@ -1,0 +1,9 @@
+{"db_id":"r160",
+	
+	"id":"25.11.2",
+	"label":"Moita Benches",
+	"type":"Room",
+	"map":"Second Floor North",
+	"position":{"x":13,"y":-19,"z":2},
+	"dimensions":{"x":2,"y":4}
+}

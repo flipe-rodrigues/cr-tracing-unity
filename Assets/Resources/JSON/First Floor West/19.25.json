@@ -1,0 +1,9 @@
+{"db_id":"r112",
+	
+	"id":"19.25",
+	"label":"Anatomic Pathology",
+	"type":"Room",
+	"map":"First Floor West",
+	"position":{"x":12,"y":-27,"z":1},
+	"dimensions":{"x":2,"y":5}
+}

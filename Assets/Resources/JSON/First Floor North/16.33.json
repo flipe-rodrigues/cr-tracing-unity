@@ -1,0 +1,9 @@
+{"db_id":"r56",
+	
+	"id":"16.33",
+	"label":"Confocal fluorescence microscopy (16.33)",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":6,"y":-10,"z":1},
+	"dimensions":{"x":4,"y":2}
+}

@@ -1,0 +1,9 @@
+{"db_id":"r22",
+	
+	"id":"15.11.3",
+	"label":"NeurIMM Benches",
+	"type":"Room",
+	"map":"First Floor North",
+	"position":{"x":16,"y":-19,"z":1},
+	"dimensions":{"x":2,"y":4}
+}
