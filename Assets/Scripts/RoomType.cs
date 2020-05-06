@@ -4,9 +4,9 @@ using UnityEngine;
 [Serializable]
 public class RoomTypeColors
 {
-    public string type;
+    public string typeName;
     public Color toggledColor;
     public Color untoggledColor;
 }
 
-public enum RoomType { access, room, node }
+public enum RoomType { Access, Room, Node }

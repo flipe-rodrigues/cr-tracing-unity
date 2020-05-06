@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/WebGL.json", {onProgress: UnityProgress});
+      window.username = "first.last";
+    </script>
+  </head>
+  <body style="background-color: #231F20; margin:0px; padding:0px;">
+    <div id="unityContainer" style="width: 100vw; height: 100vh; border:0px"></div>
+  </body>
+</html>

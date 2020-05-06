@@ -55,17 +55,11 @@ public class RoomBhv : MonoBehaviour,
 
     private void AssignTypeImageColors()
     {
-        List<string> typeNames = new List<string>(Enum.GetNames(typeof(RoomType)));
-
         string typeName = Enum.GetName(typeof(RoomType),roomType);
 
-        int index = typeNames.IndexOf(typeName);
+        _toggledImageColor = roomTypeColors.Find(r => r.typeName == typeName).toggledColor;
 
-        _toggledImageColor = roomTypeColors[index].toggledColor;
-
-        _untoggledImageColor = roomTypeColors[index].untoggledColor;
-
-        _image.color = _untoggledImageColor;
+        _untoggledImageColor = roomTypeColors.Find(r => r.typeName == typeName).untoggledColor;
     }
 
     public void Enable()
@@ -111,7 +105,14 @@ public class RoomBhv : MonoBehaviour,
     {
         if (eventData.button.ToString() == "Left")
         {
-            if (eventData.clickCount == 2)
+            if (eventData.clickCount == 1)
+            {
+                StopAllCoroutines();
+
+                StartCoroutine(this.Flash(10f));
+            }
+
+            else if (eventData.clickCount == 2)
             {
                 this.isToggled = !this.isToggled;
 
@@ -164,7 +165,7 @@ public class RoomBhv : MonoBehaviour,
         {
             _image.color = Color.Lerp(imageColor, _untoggledImageColor, lerp);
 
-            _label.color = Color.Lerp(labelColor, Color.white, lerp);
+            _label.color = Color.Lerp(labelColor, untoggledFontColor, lerp);
 
             lerp = Mathf.Clamp01(lerp + Time.deltaTime * speed);
 
@@ -177,13 +178,13 @@ public class RoomBhv : MonoBehaviour,
 
         imageColor = this.isToggled ? _toggledImageColor : _toggledImageColor;
 
-        labelColor = this.isToggled ? _untoggledImageColor : Color.white;
+        labelColor = this.isToggled ? toggledFontColor : untoggledFontColor;
 
         while (lerp < maxLerp)
         {
             _image.color = Color.Lerp(_untoggledImageColor, imageColor, lerp);
 
-            _label.color = Color.Lerp(Color.white, labelColor, lerp);
+            _label.color = Color.Lerp(untoggledFontColor, labelColor, lerp);
 
             lerp = Mathf.Clamp01(lerp + Time.deltaTime * speed);
 
@@ -192,7 +193,7 @@ public class RoomBhv : MonoBehaviour,
 
         _image.color = Color.Lerp(_untoggledImageColor, imageColor, maxLerp);
 
-        _label.color = Color.Lerp(Color.white, labelColor, maxLerp);
+        _label.color = Color.Lerp(untoggledFontColor, labelColor, maxLerp);
     }
 
     private IEnumerator ChangeImageColor(float maxLerp, float lerpSpeed)

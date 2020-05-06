@@ -146,6 +146,8 @@ public class VirtualCameraBhv : MonoBehaviour
         _followTarget.position += direction * 1f / focalDistance * increment * multiplier;
 
         _virtualCamera.m_Lens.FieldOfView -= increment * multiplier;
+
+        _virtualCamera.m_Lens.FieldOfView = Mathf.Clamp(_virtualCamera.m_Lens.FieldOfView, 0, 180f);
     }
 
     private Vector3 GetWorldPosition(Vector3 point)

@@ -55,7 +55,7 @@ public class CameraManager : MonoBehaviour
         {
             mainCamera.backgroundColor = Color.Lerp(currentColor, targetColor, lerp);
 
-            lerp = Mathf.Clamp01(lerp + Time.deltaTime);
+            lerp = Mathf.Clamp01(lerp + Time.deltaTime * .5f);
 
             yield return null;
         }

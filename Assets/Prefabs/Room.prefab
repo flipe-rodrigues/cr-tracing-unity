@@ -123,13 +123,13 @@ MonoBehaviour:
   isToggled: 0
   roomType: 0
   roomTypeColors:
-  - type: Access
+  - typeName: Access
     toggledColor: {r: 1, g: 1, b: 1, a: 1}
     untoggledColor: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
-  - type: Room
+  - typeName: Room
     toggledColor: {r: 0, g: 0.68235296, b: 0.93725497, a: 1}
     untoggledColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  - type: Node
+  - typeName: Node
     toggledColor: {r: 0.9294118, g: 0.098039225, b: 0.25490198, a: 1}
     untoggledColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   toggledFontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}

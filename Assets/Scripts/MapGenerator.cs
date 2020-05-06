@@ -129,9 +129,20 @@ public class MapGenerator : MonoBehaviour
 
         roomBhv.roomData = roomData;
 
-        roomBhv.roomType = (RoomType)System.Enum.Parse(typeof(RoomType), roomData.type.ToLower());
+        roomBhv.roomType = (RoomType)System.Enum.Parse(typeof(RoomType), roomData.type);
 
-        roomBhv.GetComponentInChildren<TextMeshProUGUI>().text = roomData.label;
+        TextMeshProUGUI roomLabel = roomBhv.GetComponentInChildren<TextMeshProUGUI>();
+
+        roomLabel.text = roomData.label;
+
+        if (roomData.dimensions.x <= 1)
+        {
+            roomLabel.rectTransform.Rotate(Vector3.forward, 90f);
+
+            Vector2 dimensions = roomLabel.rectTransform.sizeDelta;
+
+            roomLabel.rectTransform.sizeDelta = new Vector2(dimensions.y, dimensions.x);
+        }
     }
 
     private void InstantiateVirtualCamera(Transform mapTransform)
