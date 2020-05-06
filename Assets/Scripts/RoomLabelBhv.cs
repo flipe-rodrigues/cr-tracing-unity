@@ -2,10 +2,10 @@
 using UnityEngine;
 using TMPro;
 
-public class CurrentRoomLabelBhv : MonoBehaviour
+public class RoomLabelBhv : MonoBehaviour
 {
     // singleton instance
-    public static CurrentRoomLabelBhv instance = null;
+    public static RoomLabelBhv instance = null;
 
     // private fields
     private TextMeshProUGUI _label;

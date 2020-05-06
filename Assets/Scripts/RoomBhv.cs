@@ -98,7 +98,7 @@ public class RoomBhv : MonoBehaviour,
 
         this.TweenTowardsTarget(.5f, 1f);
 
-        CurrentRoomLabelBhv.instance.SetText(roomData.label, 1f, 1f);
+        RoomLabelBhv.instance.SetText(roomData.label, 1f, 2.5f);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -139,7 +139,7 @@ public class RoomBhv : MonoBehaviour,
 
         this.TweenTowardsTarget(1f, 5f);
 
-        CurrentRoomLabelBhv.instance.SetText(roomData.label, 0f, 5f);
+        RoomLabelBhv.instance.SetText(roomData.label, 0f, 5f);
     }
 
     private void TweenTowardsTarget(float maxLerp, float lerpSpeed)
