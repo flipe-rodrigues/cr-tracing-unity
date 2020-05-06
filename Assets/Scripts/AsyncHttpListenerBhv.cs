@@ -27,25 +27,29 @@ public class AsyncHttpListenerBhv : MonoBehaviour
     {
         WWWForm form = new WWWForm();
 
-        form.AddField("user", "Take 3");
+        form.AddField("user", "Manel");
+        foreach (RoomBhv room in UserBhv.instance.rooms)
+        {
+            Debug.Log(room.name + " " + room.isToggled.ToString());
+            form.AddField(room.name, room.isToggled.ToString());
+        }
+        //UserData data = new UserData(UserBhv.instance);
+        //data = SaveSystem.LoadUserData();
+        //BinaryFormatter formatter = new BinaryFormatter();
+        //MemoryStream stream = new MemoryStream();
+        //formatter.Serialize(stream, data); 
+        //byte[] dataArray = stream.ToArray();
 
-        UserData data = new UserData(UserBhv.instance);
-        data = SaveSystem.LoadUserData();
-        BinaryFormatter formatter = new BinaryFormatter();
-        MemoryStream stream = new MemoryStream();
-        formatter.Serialize(stream, data); 
-        byte[] dataArray = stream.ToArray();
+        //byte[] arr = new byte[4];
+        //arr[0] = 00000001;
+        //arr[1] = 00000001;
+        //arr[2] = 00000001;
+        //arr[3] = 00000001;
+        //Debug.Log(System.Convert.ToBase64String(arr));
 
-        byte[] arr = new byte[4];
-        arr[0] = 00000001;
-        arr[1] = 00000001;
-        arr[2] = 00000001;
-        arr[3] = 00000001;
-
-        Debug.Log(System.Convert.ToBase64String(arr));
         //form.AddField("raw_data","this should be a byte[]");
-        form.AddBinaryData("raw_data", arr);
-        stream.Close();
+        //form.AddBinaryData("raw_data", arr);
+        //stream.Close();
 
         UnityWebRequest request = UnityWebRequest.Post(uri, form);
 
@@ -65,7 +69,6 @@ public class AsyncHttpListenerBhv : MonoBehaviour
                 request.downloadHandler.data + " " + request.downloadHandler.text + " " + request.GetRequestHeader(""));
         }
     }
-
 
     //----- POST type call
     //public void PostDataToURL(string url, WWWForm data, downloadData callback, bool showLoading = true)
@@ -93,8 +96,6 @@ public class AsyncHttpListenerBhv : MonoBehaviour
     //        callback.Invoke(request.downloadHandler.data, request.downloadHandler.text, "");
     //    }
     //}
-
-
 
     private void StartHttpListener()
     {
