@@ -26,8 +26,6 @@ public class MapManager : MonoBehaviour
     {
         this.Maps[mapIndex].Select();
 
-        Debug.Log(mapIndex);
-
         for (int i = 0; i < this.Maps.Length; i++)
         {
             if (i != mapIndex)

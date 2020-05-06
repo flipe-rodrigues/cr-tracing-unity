@@ -8,10 +8,11 @@ public class MapGeneratorEditor : Editor
     {
         base.OnInspectorGUI();
 
-        MapGenerator levelGenerator = (MapGenerator)target;
+        MapGenerator mapGenerator = (MapGenerator)target;
 
-        if (GUILayout.Button("Generate"))        {
-            levelGenerator.GenerateMaps();
+        if (GUILayout.Button("Generate"))
+        {
+            mapGenerator.GenerateMaps();
         }
     }
 }

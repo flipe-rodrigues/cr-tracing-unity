@@ -144,7 +144,7 @@ public class MapGenerator : MonoBehaviour
 
         virtualCamera.Priority = -1;
 
-        virtualCamera.m_Lens.FieldOfView = 100f;
+        virtualCamera.m_Lens.FieldOfView = 90f;
 
         CinemachineTransposer transposer = virtualCamera.AddCinemachineComponent<CinemachineTransposer>();
 
