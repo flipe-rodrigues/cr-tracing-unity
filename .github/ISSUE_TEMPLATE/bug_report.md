@@ -28,7 +28,7 @@ Steps to reproduce the behavior:
 
 **Basic Information**
 
- - Desktop (please complete the following information):**
+ - Desktop (please complete the following information):
  - Device: [e.g. iPhone6, Desktop]
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
@@ -37,7 +37,3 @@ Steps to reproduce the behavior:
 **Screenshots**
 
 <!-- if the issue is a visual issue, please include screenshots showing the problem if possible -->
-
-**Reproduction Link**
-
-<!-- please upload or provide a link to a reproduction case -->
