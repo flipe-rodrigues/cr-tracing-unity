@@ -24,6 +24,8 @@ public class MapManager : MonoBehaviour
 
     public void SelectMap(int mapIndex)
     {
+        StopAllCoroutines();
+
         this.Maps[mapIndex].Select();
 
         for (int i = 0; i < this.Maps.Length; i++)

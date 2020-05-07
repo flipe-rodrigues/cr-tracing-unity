@@ -4,32 +4,37 @@ using Cinemachine;
 public class VirtualCameraBhv : MonoBehaviour
 {
     // public fields
-    [Header("Pan Settings:")]
     [Range(.1f, 30f)]
-    public float panSpeedModifier = 15f;
-    public Vector2 maxPan = new Vector2(16f, 9f);
-    [Header("Zoom Settings:")]
-    [Range(.1f, 1e3f)]
-    public float zoomSpeedModifier = 500f;
-    public float minFOV = 25f;
-    public float maxFOV = 95f;
+    public float panSpeedModifier = 10f;
+    [Range(.1f, 30f)]
+    public float zoomSpeedModifier = 10f;
+    public Vector3 boundingBoxDimensions = new Vector3(40, 20, 10);
 
     // private fields
+    private Transform _transform;
     private Transform _followTarget;
+    private Bounds _boundingBox;
     private Vector3 _targetHomePosition;
     private Vector3 _mouseDownPosition;
     private CinemachineVirtualCamera _virtualCamera;
+    private CinemachineTransposer _transposer;
     private bool _isSelected;
 
     private void Awake()
     {
+        _transform = this.GetComponent<Transform>();
+
         _virtualCamera = this.GetComponent<CinemachineVirtualCamera>();
+
+        _transposer = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
     }
     private void Start()
     {
         _followTarget = _virtualCamera.Follow;
 
         _targetHomePosition = _followTarget.position;
+
+        this.InitializeBoundingBox();
     }
 
     private void Update()
@@ -50,61 +55,14 @@ public class VirtualCameraBhv : MonoBehaviour
             }
         }
 
-        this.StayWithinPanLimits();
-
-        this.StayWithinZoomLimits();
+        this.StayWithinBoundingBox();
     }
 
-    private void StayWithinPanLimits()
+    private void InitializeBoundingBox()
     {
-        Vector3 homeDirection = _targetHomePosition - _followTarget.position;
+        Vector3 boxCenter = _targetHomePosition + Vector3.forward * boundingBoxDimensions.z / 2f;
 
-        float multiplier;
-
-        if (homeDirection.x > maxPan.x)
-        {
-            multiplier = (Mathf.Abs(homeDirection.x) - maxPan.x) * Time.deltaTime;
-
-            _followTarget.position += Vector3.right * multiplier;
-        }
-        if (homeDirection.x < -maxPan.x)
-        {
-            multiplier = (Mathf.Abs(homeDirection.x) - maxPan.x) * Time.deltaTime;
-
-            _followTarget.position += Vector3.left * multiplier;
-        }
-        if (homeDirection.y > maxPan.y)
-        {
-            multiplier = (Mathf.Abs(homeDirection.y) - maxPan.y) * Time.deltaTime;
-
-            _followTarget.position += Vector3.up * multiplier;
-        }
-        if (homeDirection.y < -maxPan.y)
-        {
-            multiplier = (Mathf.Abs(homeDirection.y) - maxPan.y) * Time.deltaTime;
-
-            _followTarget.position += Vector3.down * multiplier;
-        }
-    }
-
-    private void StayWithinZoomLimits()
-    {
-        float currentFOV = _virtualCamera.m_Lens.FieldOfView;
-
-        float increment;
-
-        if (currentFOV > maxFOV)
-        {
-            increment = Mathf.Abs(currentFOV - maxFOV) * Time.deltaTime;
-
-            _virtualCamera.m_Lens.FieldOfView -= increment;
-        }
-        if (currentFOV < minFOV)
-        {
-            increment = Mathf.Abs(currentFOV - minFOV) * Time.deltaTime;
-
-            _virtualCamera.m_Lens.FieldOfView += increment;
-        }
+        _boundingBox = new Bounds(boxCenter, boundingBoxDimensions);
     }
 
     public void Select()
@@ -113,7 +71,7 @@ public class VirtualCameraBhv : MonoBehaviour
 
         _virtualCamera.Priority = 10;
 
-        _virtualCamera.m_Lens.FieldOfView = Mathf.Min(maxFOV + 50f, 180f);
+        _followTarget.position += Vector3.back * 50;
     }
 
     public void Deselect()
@@ -134,20 +92,36 @@ public class VirtualCameraBhv : MonoBehaviour
 
     private void Zoom(float increment)
     {
-        float multiplier = zoomSpeedModifier * Time.deltaTime;
+        float multiplier = increment * zoomSpeedModifier * Time.deltaTime;
 
-        Vector3 direction = increment > 0 ? 
-            this.GetWorldPosition(Input.mousePosition) - _followTarget.position :
-            _followTarget.position - _targetHomePosition;
+        Vector3 direction = this.GetWorldPosition(Input.mousePosition) - _transform.position;
 
-        float focalDistance = Mathf.Cos(_virtualCamera.m_Lens.FieldOfView / 2f * Mathf.Deg2Rad) * 
-            Mathf.Abs(_virtualCamera.transform.position.z - _followTarget.position.z);
+        _followTarget.position += direction * multiplier;
+    }
 
-        _followTarget.position += direction * 1f / focalDistance * increment * multiplier;
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(_boundingBox.center, boundingBoxDimensions);
+    }
 
-        _virtualCamera.m_Lens.FieldOfView -= increment * multiplier;
+    private void StayWithinBoundingBox()
+    {
+        Vector3 closestPoint = _boundingBox.ClosestPoint(_followTarget.position);
 
-        _virtualCamera.m_Lens.FieldOfView = Mathf.Clamp(_virtualCamera.m_Lens.FieldOfView, 0, 180f);
+        Vector3 transgression = _followTarget.position - closestPoint;
+
+        Debug.DrawRay(_followTarget.position, -transgression, Color.red);
+
+        _followTarget.position -= transgression * Time.deltaTime;
+
+        if (_boundingBox.Contains(_followTarget.position))
+        {
+            _followTarget.GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+        else
+        {
+            _followTarget.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 
     private Vector3 GetWorldPosition(Vector3 point)
