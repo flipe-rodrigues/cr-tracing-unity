@@ -22,9 +22,9 @@ public class MapSelectionBhv : MonoBehaviour
     {
         _mapDropdown.options.Clear();
 
-        foreach (MapBhv map in MapManager.instance.Maps)
+        foreach (IMap map in MapManager.instance.Maps)
         {
-            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(map.name);
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(map.GetName());
 
             _mapDropdown.options.Add(option);
         }

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MapBhv : MonoBehaviour
+public class MapBhv : MonoBehaviour, IMap
 {
     // public fields
-    public Color levelColor;
+    public Color mapColor;
 
     // private fields
     private RoomBhv[] _rooms;
@@ -18,7 +18,17 @@ public class MapBhv : MonoBehaviour
     {
         this.LogRooms();
     }
-    
+
+    public string GetName()
+    {
+        return this.name;
+    }
+
+    public Color GetColor()
+    {
+        return this.mapColor;
+    }
+
     private void LogRooms()
     {
         foreach (RoomBhv room in _rooms)

@@ -6,21 +6,18 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class LogoBhv : MonoBehaviour,
-    IPointerEnterHandler,
-    IPointerClickHandler,
-    IPointerExitHandler
+public class LogoBhv : MonoBehaviour, IToggleable
 {
     // public fields
     public bool isToggled;
     [Header("Image Settings:")]
-    public RoomType roomType;
-    public List<RoomTypeColors> roomTypeColors;
+    public Color toggledImageColor;
+    public Color untoggledImageColor;
     [Header("Label Settings:")]
     public Color toggledFontColor;
     public Color untoggledFontColor;
-    public float toggledFontSize;
-    public float untoggledFontSize;
+    public float toggledFontSize = .5f;
+    public float untoggledFontSize = .4f;
     [Header("Audio Settings:")]
     public AudioClip toggleClip;
     public AudioClip untoggleClip;
@@ -28,9 +25,7 @@ public class LogoBhv : MonoBehaviour,
     // private fields
     private GraphicRaycaster _graphicsRaycaster;
     private Image _image;
-    private TextMeshProUGUI _label;
-    private Color _toggledImageColor;
-    private Color _untoggledImageColor;
+    private TextMeshProUGUI[] _labels;
     private Color _targetImageColor;
     private Color _targetFontColor;
     private float _targetFontSize;
@@ -41,36 +36,20 @@ public class LogoBhv : MonoBehaviour,
 
         _image = this.GetComponentInChildren<Image>();
 
-        _label = this.GetComponentInChildren<TextMeshProUGUI>();
+        _labels = this.GetComponentsInChildren<TextMeshProUGUI>();
     }
 
     private void Start()
     {
-        _image.alphaHitTestMinimumThreshold = .5f;
-
-        this.AssignTypeImageColors();
+        _image.alphaHitTestMinimumThreshold = 1f;
     }
 
-    private void AssignTypeImageColors()
-    {
-        List<string> typeNames = new List<string>(Enum.GetNames(typeof(RoomType)));
-
-        string typeName = Enum.GetName(typeof(RoomType), roomType);
-
-        int index = typeNames.IndexOf(typeName);
-
-        _toggledImageColor = roomTypeColors[index].toggledColor;
-
-        _untoggledImageColor = roomTypeColors[index].untoggledColor;
-
-        _image.color = _untoggledImageColor;
-    }
 
     public void Enable()
     {
         _graphicsRaycaster.enabled = true;
 
-        _targetImageColor = this.isToggled ? _toggledImageColor : _untoggledImageColor;
+        _targetImageColor = this.isToggled ? toggledImageColor : untoggledImageColor;
 
         _targetFontColor = this.isToggled ? toggledFontColor : untoggledFontColor;
 
@@ -83,7 +62,7 @@ public class LogoBhv : MonoBehaviour,
     {
         _graphicsRaycaster.enabled = false;
 
-        _targetImageColor = new Color(_image.color.r, _image.color.g, _image.color.b, .75f);
+        _targetImageColor = new Color(_image.color.r, _image.color.g, _image.color.b, 1f);
 
         _targetFontColor = Color.clear;
 
@@ -94,11 +73,11 @@ public class LogoBhv : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _targetImageColor = this.isToggled ? _image.color : _toggledImageColor;
+        _targetImageColor = this.isToggled ? _image.color : toggledImageColor;
 
-        _targetFontColor = this.isToggled ? _label.color : untoggledFontColor;
+        _targetFontColor = this.isToggled ? _labels[0].color : untoggledFontColor;
 
-        _targetFontSize = this.isToggled ? _label.fontSize : toggledFontSize;
+        _targetFontSize = this.isToggled ? _labels[0].fontSize : toggledFontSize;
 
         this.TweenTowardsTarget(.5f, 1f);
     }
@@ -107,11 +86,18 @@ public class LogoBhv : MonoBehaviour,
     {
         if (eventData.button.ToString() == "Left")
         {
-            if (eventData.clickCount == 2)
+            if (eventData.clickCount == 1)
+            {
+                StopAllCoroutines();
+
+                StartCoroutine(this.Flash(10f));
+            }
+
+            else if (eventData.clickCount == 2)
             {
                 this.isToggled = !this.isToggled;
 
-                _targetImageColor = this.isToggled ? _toggledImageColor : _untoggledImageColor;
+                _targetImageColor = this.isToggled ? toggledImageColor : untoggledImageColor;
 
                 _targetFontColor = this.isToggled ? toggledFontColor : untoggledFontColor;
 
@@ -126,9 +112,9 @@ public class LogoBhv : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _targetImageColor = this.isToggled ? _targetImageColor : _untoggledImageColor;
+        _targetImageColor = this.isToggled ? _targetImageColor : untoggledImageColor;
 
-        _targetFontColor = this.isToggled ? _targetFontColor : Color.white;
+        _targetFontColor = this.isToggled ? _targetFontColor : untoggledFontColor;
 
         _targetFontSize = this.isToggled ? _targetFontSize : untoggledFontSize;
 
@@ -150,15 +136,18 @@ public class LogoBhv : MonoBehaviour,
     {
         Color imageColor = _image.color;
 
-        Color labelColor = _label.color;
+        Color labelColor = _labels[0].color;
 
         float lerp = 0;
 
         while (lerp < 1)
         {
-            _image.color = Color.Lerp(imageColor, _untoggledImageColor, lerp);
+            _image.color = Color.Lerp(imageColor, untoggledImageColor, lerp);
 
-            _label.color = Color.Lerp(labelColor, Color.white, lerp);
+            foreach (TextMeshProUGUI label in _labels)
+            {
+                label.color = Color.Lerp(labelColor, untoggledFontColor, lerp);
+            }
 
             lerp = Mathf.Clamp01(lerp + Time.deltaTime * speed);
 
@@ -169,24 +158,30 @@ public class LogoBhv : MonoBehaviour,
 
         float maxLerp = this.isToggled ? 1f : .5f;
 
-        imageColor = this.isToggled ? _toggledImageColor : _toggledImageColor;
+        imageColor = this.isToggled ? toggledImageColor : toggledImageColor;
 
-        labelColor = this.isToggled ? _untoggledImageColor : Color.white;
+        labelColor = this.isToggled ? toggledFontColor : untoggledFontColor;
 
         while (lerp < maxLerp)
         {
-            _image.color = Color.Lerp(_untoggledImageColor, imageColor, lerp);
+            _image.color = Color.Lerp(untoggledImageColor, imageColor, lerp);
 
-            _label.color = Color.Lerp(Color.white, labelColor, lerp);
+            foreach (TextMeshProUGUI label in _labels)
+            {
+                label.color = Color.Lerp(untoggledFontColor, labelColor, lerp);
+            }
 
             lerp = Mathf.Clamp01(lerp + Time.deltaTime * speed);
 
             yield return null;
         }
 
-        _image.color = Color.Lerp(_untoggledImageColor, imageColor, maxLerp);
+        _image.color = Color.Lerp(untoggledImageColor, imageColor, maxLerp);
 
-        _label.color = Color.Lerp(Color.white, labelColor, maxLerp);
+        foreach (TextMeshProUGUI label in _labels)
+        {
+            label.color = Color.Lerp(untoggledFontColor, labelColor, maxLerp);
+        }
     }
 
     private IEnumerator ChangeImageColor(float maxLerp, float lerpSpeed)
@@ -212,13 +207,16 @@ public class LogoBhv : MonoBehaviour,
 
     private IEnumerator ChangeLabelColor(float maxLerp, float lerpSpeed)
     {
-        Color currentColor = _label.color;
+        Color currentColor = _labels[0].color;
 
         float lerp = 0;
 
         while (lerp < maxLerp)
         {
-            _label.color = Color.Lerp(currentColor, _targetFontColor, lerp);
+            foreach (TextMeshProUGUI label in _labels)
+            {
+                label.color = Color.Lerp(currentColor, _targetFontColor, lerp);
+            }
 
             lerp = Mathf.Clamp01(lerp + Time.deltaTime * lerpSpeed);
 
@@ -227,19 +225,25 @@ public class LogoBhv : MonoBehaviour,
 
         if (maxLerp == 1f)
         {
-            _label.color = _targetFontColor;
+            foreach (TextMeshProUGUI label in _labels)
+            {
+                label.color = _targetFontColor;
+            }
         }
     }
 
     private IEnumerator ChangeLabelFontSize(float maxLerp, float lerpSpeed)
     {
-        float currentSize = _label.fontSize;
+        float currentSize = _labels[0].fontSize;
 
         float lerp = 0;
 
         while (lerp < maxLerp)
         {
-            _label.fontSize = Mathf.Lerp(currentSize, _targetFontSize, lerp);
+            foreach (TextMeshProUGUI label in _labels)
+            {
+                label.fontSize = Mathf.Lerp(currentSize, _targetFontSize, lerp);
+            }
 
             lerp = Mathf.Clamp01(lerp + Time.deltaTime * lerpSpeed);
 
@@ -248,7 +252,10 @@ public class LogoBhv : MonoBehaviour,
 
         if (maxLerp == 1f)
         {
-            _label.fontSize = _targetFontSize;
+            foreach (TextMeshProUGUI label in _labels)
+            {
+                label.fontSize = _targetFontSize;
+            }
         }
     }
 }

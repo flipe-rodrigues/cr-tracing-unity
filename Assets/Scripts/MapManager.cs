@@ -6,7 +6,7 @@ public class MapManager : MonoBehaviour
     public static MapManager instance = null;
 
     // public properties
-    public MapBhv[] Maps { get; private set; }
+    public IMap[] Maps { get; private set; }
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class MapManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        this.Maps = this.GetComponentsInChildren<MapBhv>();
+        this.Maps = this.GetComponentsInChildren<IMap>();
     }
 
     public void SelectMap(int mapIndex)

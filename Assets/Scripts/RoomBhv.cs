@@ -6,10 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class RoomBhv : MonoBehaviour, 
-    IPointerEnterHandler,
-    IPointerClickHandler,
-    IPointerExitHandler
+public class RoomBhv : MonoBehaviour, IToggleable
 {
     // public fields
     [Header("Room Data:")]
@@ -21,8 +18,8 @@ public class RoomBhv : MonoBehaviour,
     [Header("Label Settings:")]
     public Color toggledFontColor;
     public Color untoggledFontColor;
-    public float toggledFontSize;
-    public float untoggledFontSize;
+    public float toggledFontSize = .5f;
+    public float untoggledFontSize = .4f;
     [Header("Audio Settings:")]
     public AudioClip toggleClip;
     public AudioClip untoggleClip;
@@ -48,14 +45,12 @@ public class RoomBhv : MonoBehaviour,
 
     private void Start()
     {
-        _image.alphaHitTestMinimumThreshold = 1f;
-
         this.AssignTypeImageColors();
     }
 
     private void AssignTypeImageColors()
     {
-        string typeName = Enum.GetName(typeof(RoomType),roomType);
+        string typeName = Enum.GetName(typeof(RoomType), roomType);
 
         _toggledImageColor = roomTypeColors.Find(r => r.typeName == typeName).toggledColor;
 
@@ -133,7 +128,7 @@ public class RoomBhv : MonoBehaviour,
     {
         _targetImageColor = this.isToggled ? _targetImageColor : _untoggledImageColor;
 
-        _targetFontColor = this.isToggled ? _targetFontColor : Color.white;
+        _targetFontColor = this.isToggled ? _targetFontColor : untoggledFontColor;
 
         _targetFontSize = this.isToggled ? _targetFontSize : untoggledFontSize;
 

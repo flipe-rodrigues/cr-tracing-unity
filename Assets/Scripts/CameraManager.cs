@@ -42,7 +42,7 @@ public class CameraManager : MonoBehaviour
 
         StopAllCoroutines();
 
-        StartCoroutine(this.ChangeCameraColor(MapManager.instance.Maps[mapIndex].levelColor));
+        StartCoroutine(this.ChangeCameraColor(MapManager.instance.Maps[mapIndex].GetColor()));
     }
 
     public IEnumerator ChangeCameraColor(Color targetColor)
