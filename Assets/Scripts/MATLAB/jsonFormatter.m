@@ -16,7 +16,7 @@ brk_expressions = {'",','},'};
 tab_expressions = {'\n'};
 db_id = 0;
 
-%% iterate through levels
+% iterate through levels
 n_levels = numel(levelsDir);
 for ii = 1 : n_levels
     roomsPath = fullfile(levelsDir(ii).folder,levelsDir(ii).name);
@@ -42,11 +42,13 @@ for ii = 1 : n_levels
         else
             data.position.z = +1;
         end
-        data = orderfields(data,[7,1,2,3,4,5,6])
+        fields = fieldnames(data);
+        offset = find(strcmpi(fields,'db_id'));
+        data = orderfields(data,circshift([7,1,2,3,4,5,6],-offset));
 
         str = jsonencode(data);
         
-        str = insertBefore(str,'"id"','\n');
+        str = insertBefore(str,'"db_id"','\n');
         for kk = 1 : numel(brk_expressions)
             str = insertAfter(str,brk_expressions{kk},'\n');
         end

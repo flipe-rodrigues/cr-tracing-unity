@@ -53,9 +53,9 @@ public class VirtualCameraBhv : MonoBehaviour
             {
                 this.Zoom(Input.GetAxis("Mouse ScrollWheel"));
             }
-        }
 
-        this.StayWithinBoundingBox();
+            this.StayWithinBoundingBox();
+        }
     }
 
     private void InitializeBoundingBox()
