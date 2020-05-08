@@ -86,7 +86,6 @@ public class NetworkManager : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Post(uri, form);
 
         request.SetRequestHeader("AUTHORIZATION", "Basic dHJhY2luZzp0cmFjaW5nY2N1MTIz");
-                                                  "Basic dHJhY2luZzp0cmFjaW5nY2N1MTIz"
 
 
         yield return request.SendWebRequest();

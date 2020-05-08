@@ -54716,7 +54716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4d31450ccd2714ba9ac1ba2cf99d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uri: http://tracinccu.online/test.php
+  uri: https://tracinccu.online/test.php
   authKeyFile: {fileID: 4900000, guid: 19a30da16634acc43953a6cc2a5a96a1, type: 3}
 --- !u!1 &968748776
 GameObject:
