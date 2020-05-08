@@ -69,7 +69,7 @@ public class VirtualCameraBhv : MonoBehaviour
     {
         _isSelected = true;
 
-        _virtualCamera.Priority = 10;
+        _virtualCamera.Priority = 1;
 
         _followTarget.position += Vector3.back * 50;
     }
@@ -113,15 +113,6 @@ public class VirtualCameraBhv : MonoBehaviour
         Debug.DrawRay(_followTarget.position, -transgression, Color.red);
 
         _followTarget.position -= transgression * Time.deltaTime;
-
-        if (_boundingBox.Contains(_followTarget.position))
-        {
-            _followTarget.GetComponent<SpriteRenderer>().color = Color.yellow;
-        }
-        else
-        {
-            _followTarget.GetComponent<SpriteRenderer>().color = Color.red;
-        }
     }
 
     private Vector3 GetWorldPosition(Vector3 point)

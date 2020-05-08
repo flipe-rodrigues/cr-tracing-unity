@@ -8,6 +8,9 @@ using TMPro;
 
 public class RoomBhv : MonoBehaviour, IToggleable
 {
+    // public properties
+    public bool IsEnabled { get { return _graphicsRaycaster.enabled; } }
+
     // public fields
     [Header("Room Data:")]
     public RoomData roomData;
@@ -15,6 +18,8 @@ public class RoomBhv : MonoBehaviour, IToggleable
     [Header("Image Settings:")]
     public RoomType roomType;
     public List<RoomTypeColors> roomTypeColors;
+    [Range(0f, 1f)]
+    public float disabledAlpha = .75f;
     [Header("Label Settings:")]
     public Color toggledFontColor;
     public Color untoggledFontColor;
@@ -25,6 +30,7 @@ public class RoomBhv : MonoBehaviour, IToggleable
     public AudioClip untoggleClip;
 
     // private fields
+    private Canvas _canvas;
     private GraphicRaycaster _graphicsRaycaster;
     private Image _image;
     private TextMeshProUGUI _label;
@@ -36,6 +42,8 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
     private void Awake()
     {
+        _canvas = this.GetComponent<Canvas>();
+
         _graphicsRaycaster = this.GetComponent<GraphicRaycaster>();
 
         _image = this.GetComponentInChildren<Image>();
@@ -45,7 +53,14 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
     private void Start()
     {
+        _graphicsRaycaster.enabled = false;
+
         this.AssignTypeImageColors();
+    }
+
+    private void LateUpdate()
+    {
+        _canvas.enabled = _image.color.a != 0;
     }
 
     private void AssignTypeImageColors()
@@ -55,10 +70,14 @@ public class RoomBhv : MonoBehaviour, IToggleable
         _toggledImageColor = roomTypeColors.Find(r => r.typeName == typeName).toggledColor;
 
         _untoggledImageColor = roomTypeColors.Find(r => r.typeName == typeName).untoggledColor;
+
+        _image.color = new Color(_untoggledImageColor.r, _untoggledImageColor.g, _untoggledImageColor.b, disabledAlpha);
     }
 
     public void Enable()
     {
+        _canvas.enabled = true;
+
         _graphicsRaycaster.enabled = true;
 
         _targetImageColor = this.isToggled ? _toggledImageColor : _untoggledImageColor;
@@ -74,7 +93,7 @@ public class RoomBhv : MonoBehaviour, IToggleable
     {
         _graphicsRaycaster.enabled = false;
 
-        _targetImageColor = new Color(_image.color.r, _image.color.g, _image.color.b, .75f);
+        _targetImageColor = new Color(_image.color.r, _image.color.g, _image.color.b, disabledAlpha);
 
         _targetFontColor = Color.clear;
 

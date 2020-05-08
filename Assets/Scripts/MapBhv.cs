@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class MapBhv : MonoBehaviour, IMap
 {
+    // public properties
+    public bool IsSelected { get; private set; }
+
     // public fields
     public Color mapColor;
 
@@ -39,17 +42,25 @@ public class MapBhv : MonoBehaviour, IMap
 
     public void Select()
     {
-        for (int i = 0; i < _rooms.Length; i++)
+        foreach (RoomBhv room in _rooms)
         {
-            _rooms[i].Enable();
+            if (!room.IsEnabled)
+            {
+                //room.gameObject.SetActive(true);
+
+                room.Enable();
+            }
         }
     }
 
     public IEnumerator Deselect()
     {
-        for (int i = 0; i < _rooms.Length; i++)
+        foreach (RoomBhv room in _rooms)
         {
-            _rooms[i].Disable();
+            if (room.IsEnabled)
+            {
+                room.Disable();
+            }
 
             yield return null;
         }
