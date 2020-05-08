@@ -114,7 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomData:
-    id: 
+    server_id: 
+    room_id: 
     label: 
     map: 
     type: 
@@ -132,6 +133,7 @@ MonoBehaviour:
   - typeName: Node
     toggledColor: {r: 0.9294118, g: 0.098039225, b: 0.25490198, a: 1}
     untoggledColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  disabledAlpha: 0
   toggledFontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   untoggledFontColor: {r: 1, g: 1, b: 1, a: 1}
   toggledFontSize: 0.5

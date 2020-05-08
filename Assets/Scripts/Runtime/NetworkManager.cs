@@ -8,46 +8,12 @@ using UnityEngine.Networking;
 public class NetworkManager : MonoBehaviour
 {
     // public fields
-    public string uri = "https://tracinccu.xyz/test.php";
+    public string uri;
     public TextAsset authKeyFile;
 
     // private fields
     private bool _isPosting;
     private bool _isGetting;
-
-    private void Start()
-    {
-        Debug.Log(authKeyFile.text);
-    }
-
-    private void LoadAuthKey()
-    {
-
-    }
-
-    //void Start()
-    //{
-    //    string source = "Hello World!";
-    //    using (MD5 md5Hash = MD5.Create())
-    //    {
-    //        string hash = GetMd5Hash(md5Hash, source);
-
-    //        Debug.Log("The MD5 hash of " + source + " is: " + hash + ".");
-
-    //        Debug.Log(hash.Length);
-
-    //        Debug.Log("Verifying the hash...");
-
-    //        if (VerifyMd5Hash(md5Hash, source, hash))
-    //        {
-    //            Debug.Log("The hashes are the same.");
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("The hashes are not same.");
-    //        }
-    //    }
-    //}
 
     public void OnSubmit()
     {
@@ -77,16 +43,16 @@ public class NetworkManager : MonoBehaviour
 
         form.AddField("user", userHash);
 
+        md5Hash.Dispose();
+
         foreach (RoomBhv room in UserBhv.instance.rooms)
         {
-            Debug.Log(room.roomData.server_id + " :: " + room.isToggled.ToString());
             form.AddField(room.roomData.server_id, room.isToggled.ToString());
         }
 
         UnityWebRequest request = UnityWebRequest.Post(uri, form);
 
-        request.SetRequestHeader("AUTHORIZATION", "Basic dHJhY2luZzp0cmFjaW5nY2N1MTIz");
-
+        request.SetRequestHeader("AUTHORIZATION", "Basic " + authKeyFile.text);
 
         yield return request.SendWebRequest();
 
