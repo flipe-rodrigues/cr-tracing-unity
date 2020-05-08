@@ -1,6 +1,6 @@
 {
-	"db_id":"r112",
-	"id":"19.25",
+	"server_id":"r112",
+	"room_id":"19.25",
 	"label":"Anatomic Pathology",
 	"type":"Room",
 	"map":"First Floor West",

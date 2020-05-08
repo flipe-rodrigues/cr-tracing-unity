@@ -1,6 +1,6 @@
 {
-	"db_id":"r111",
-	"id":"19.24",
+	"server_id":"r111",
+	"room_id":"19.24",
 	"label":"Preclinical MRI",
 	"type":"Room",
 	"map":"First Floor West",

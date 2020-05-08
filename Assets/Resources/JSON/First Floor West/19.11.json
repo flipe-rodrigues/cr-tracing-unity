@@ -1,6 +1,6 @@
 {
-	"db_id":"r99",
-	"id":"19.11",
+	"server_id":"r99",
+	"room_id":"19.11",
 	"label":"Histopathology",
 	"type":"Room",
 	"map":"First Floor West",

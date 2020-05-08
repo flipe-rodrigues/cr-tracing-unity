@@ -1,6 +1,6 @@
 {
-	"db_id":"r102",
-	"id":"19.14",
+	"server_id":"r102",
+	"room_id":"19.14",
 	"label":"Injection Room",
 	"type":"Room",
 	"map":"First Floor West",

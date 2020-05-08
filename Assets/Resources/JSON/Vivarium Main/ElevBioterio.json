@@ -1,6 +1,6 @@
 {
-	"db_id":"r211",
-	"id":"ElevBioterio",
+	"server_id":"r211",
+	"room_id":"ElevBioterio",
 	"label":"Elevator",
 	"type":"Access",
 	"map":"Vivarium Main",

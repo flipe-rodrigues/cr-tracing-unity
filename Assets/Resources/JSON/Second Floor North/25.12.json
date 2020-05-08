@@ -1,6 +1,6 @@
 {
-	"db_id":"r168",
-	"id":"25.12",
+	"server_id":"r168",
+	"room_id":"25.12",
 	"label":"Corridor and Stairs",
 	"type":"Access",
 	"map":"Second Floor North",

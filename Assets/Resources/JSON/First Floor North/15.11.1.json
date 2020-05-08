@@ -1,6 +1,6 @@
 {
-	"db_id":"r20",
-	"id":"15.11.1",
+	"server_id":"r20",
+	"room_id":"15.11.1",
 	"label":"Flow N GWMP Benches",
 	"type":"Room",
 	"map":"First Floor North",

@@ -36,9 +36,9 @@ public class UserBhv : MonoBehaviour
 
         for (int i = 0; i < data.roomIds.Count; i++)
         {
-            this.rooms.Find(r => r.roomData.id == data.roomIds[i]).isToggled = data.roomToggleStates[i];
+            this.rooms.Find(r => r.roomData.room_id == data.roomIds[i]).isToggled = data.roomToggleStates[i];
 
-            this.rooms.Find(r => r.roomData.id == data.roomIds[i]).Enable();
+            this.rooms.Find(r => r.roomData.room_id == data.roomIds[i]).Enable();
         }
     }
 }

@@ -1,6 +1,6 @@
 {
-	"db_id":"r213",
-	"id":"G2.01",
+	"server_id":"r213",
+	"room_id":"G2.01",
 	"label":"Main Vivarium Admin",
 	"type":"Room",
 	"map":"Vivarium Main",

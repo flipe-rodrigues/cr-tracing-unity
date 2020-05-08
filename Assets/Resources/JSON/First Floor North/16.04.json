@@ -1,6 +1,6 @@
 {
-	"db_id":"r43",
-	"id":"16.04",
+	"server_id":"r43",
+	"room_id":"16.04",
 	"label":"Hardware Platform",
 	"type":"Room",
 	"map":"First Floor North",

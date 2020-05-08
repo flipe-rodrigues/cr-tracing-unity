@@ -1,6 +1,6 @@
 {
-	"db_id":"r123",
-	"id":"24.02",
+	"server_id":"r123",
+	"room_id":"24.02",
 	"label":"Sci Comm Office",
 	"type":"Room",
 	"map":"Second Floor North",

@@ -21,7 +21,7 @@ public class UserData
 
         foreach (RoomBhv room in user.rooms)
         {
-            this.roomIds.Add(room.roomData.id);
+            this.roomIds.Add(room.roomData.room_id);
 
             this.roomToggleStates.Add(room.isToggled);
         }

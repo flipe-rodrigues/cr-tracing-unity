@@ -1,6 +1,6 @@
 {
-	"db_id":"r101",
-	"id":"19.13",
+	"server_id":"r101",
+	"room_id":"19.13",
 	"label":"Spectrometer, Flow Cytometer",
 	"type":"Room",
 	"map":"First Floor West",

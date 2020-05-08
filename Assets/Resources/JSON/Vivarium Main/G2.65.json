@@ -1,6 +1,6 @@
 {
-	"db_id":"r280",
-	"id":"G2.65",
+	"server_id":"r280",
+	"room_id":"G2.65",
 	"label":"Testing G2.65",
 	"type":"Room",
 	"map":"Vivarium Main",

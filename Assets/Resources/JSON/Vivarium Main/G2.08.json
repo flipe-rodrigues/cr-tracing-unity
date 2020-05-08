@@ -1,6 +1,6 @@
 {
-	"db_id":"r218",
-	"id":"G2.08",
+	"server_id":"r218",
+	"room_id":"G2.08",
 	"label":"Corridor",
 	"type":"Access",
 	"map":"Vivarium Main",

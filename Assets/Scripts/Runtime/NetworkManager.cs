@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Text;
+using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -6,11 +9,45 @@ public class NetworkManager : MonoBehaviour
 {
     // public fields
     public string uri = "https://tracinccu.xyz/test.php";
-    public string authKey = "Basic dHJhY2luZzp0cmFjaW5nY2N1MTIz";
+    public TextAsset authKeyFile;
 
     // private fields
     private bool _isPosting;
     private bool _isGetting;
+
+    private void Start()
+    {
+        Debug.Log(authKeyFile.text);
+    }
+
+    private void LoadAuthKey()
+    {
+
+    }
+
+    //void Start()
+    //{
+    //    string source = "Hello World!";
+    //    using (MD5 md5Hash = MD5.Create())
+    //    {
+    //        string hash = GetMd5Hash(md5Hash, source);
+
+    //        Debug.Log("The MD5 hash of " + source + " is: " + hash + ".");
+
+    //        Debug.Log(hash.Length);
+
+    //        Debug.Log("Verifying the hash...");
+
+    //        if (VerifyMd5Hash(md5Hash, source, hash))
+    //        {
+    //            Debug.Log("The hashes are the same.");
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("The hashes are not same.");
+    //        }
+    //    }
+    //}
 
     public void OnSubmit()
     {
@@ -34,16 +71,23 @@ public class NetworkManager : MonoBehaviour
 
         WWWForm form = new WWWForm();
 
-        form.AddField("user", UserBhv.instance.username);
+        MD5 md5Hash = MD5.Create();
+
+        string userHash = GetMd5Hash(md5Hash, UserBhv.instance.username);
+
+        form.AddField("user", userHash);
 
         foreach (RoomBhv room in UserBhv.instance.rooms)
         {
-            form.AddField(room.name, room.isToggled.ToString());
+            Debug.Log(room.roomData.server_id + " :: " + room.isToggled.ToString());
+            form.AddField(room.roomData.server_id, room.isToggled.ToString());
         }
 
         UnityWebRequest request = UnityWebRequest.Post(uri, form);
 
-        request.SetRequestHeader("AUTHORIZATION", authKey);
+        request.SetRequestHeader("AUTHORIZATION", "Basic dHJhY2luZzp0cmFjaW5nY2N1MTIz");
+                                                  "Basic dHJhY2luZzp0cmFjaW5nY2N1MTIz"
+
 
         yield return request.SendWebRequest();
 
@@ -53,8 +97,6 @@ public class NetworkManager : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(1);
-
             Debug.Log("Form upload complete! Here's the response:\n" + request.downloadHandler.text);
         }
 
@@ -67,7 +109,7 @@ public class NetworkManager : MonoBehaviour
 
         UnityWebRequest request = UnityWebRequest.Get(uri);
 
-        request.SetRequestHeader("AUTHORIZATION", authKey);
+        request.SetRequestHeader("AUTHORIZATION", authKeyFile.text);
 
         yield return request.SendWebRequest();
 
@@ -102,6 +144,46 @@ public class NetworkManager : MonoBehaviour
         else
         {
             Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+        }
+    }
+
+    static string GetMd5Hash(MD5 md5Hash, string input)
+    {
+
+        // Convert the input string to a byte array and compute the hash.
+        byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+        // Create a new Stringbuilder to collect the bytes
+        // and create a string.
+        StringBuilder sBuilder = new StringBuilder();
+
+        // Loop through each byte of the hashed data
+        // and format each one as a hexadecimal string.
+        for (int i = 0; i < data.Length; i++)
+        {
+            sBuilder.Append(data[i].ToString("x2"));
+        }
+
+        // Return the hexadecimal string.
+        return sBuilder.ToString();
+    }
+
+    // Verify a hash against a string.
+    static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
+    {
+        // Hash the input.
+        string hashOfInput = GetMd5Hash(md5Hash, input);
+
+        // Create a StringComparer an compare the hashes.
+        StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+        if (0 == comparer.Compare(hashOfInput, hash))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

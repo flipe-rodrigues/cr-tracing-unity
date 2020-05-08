@@ -1,6 +1,6 @@
 {
-	"db_id":"r210",
-	"id":"4",
+	"server_id":"r210",
+	"room_id":"4",
 	"label":"Stairs",
 	"type":"Access",
 	"map":"Vivarium Main",

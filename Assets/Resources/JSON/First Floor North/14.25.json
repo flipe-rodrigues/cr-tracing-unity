@@ -1,6 +1,6 @@
 {
-	"db_id":"r6",
-	"id":"14.25",
+	"server_id":"r6",
+	"room_id":"14.25",
 	"label":"Corridor",
 	"type":"Access",
 	"map":"First Floor North",

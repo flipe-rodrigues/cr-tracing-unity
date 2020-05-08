@@ -1,6 +1,6 @@
 {
-	"db_id":"r260",
-	"id":"G2.50",
+	"server_id":"r260",
+	"room_id":"G2.50",
 	"label":"Vet. Lab G2.50",
 	"type":"Room",
 	"map":"Vivarium Main",

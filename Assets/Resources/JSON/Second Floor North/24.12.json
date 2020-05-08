@@ -1,6 +1,6 @@
 {
-	"db_id":"r132",
-	"id":"24.12",
+	"server_id":"r132",
+	"room_id":"24.12",
 	"label":"Vivarium access / Supply Center",
 	"type":"Room",
 	"map":"Second Floor North",

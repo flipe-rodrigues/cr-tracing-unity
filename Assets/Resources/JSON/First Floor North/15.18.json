@@ -1,6 +1,6 @@
 {
-	"db_id":"r30",
-	"id":"15.18",
+	"server_id":"r30",
+	"room_id":"15.18",
 	"label":"PCR, Centrifuge, Freezers (15.18)",
 	"type":"Room",
 	"map":"First Floor North",

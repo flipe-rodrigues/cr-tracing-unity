@@ -1,6 +1,6 @@
 {
-	"db_id":"r22",
-	"id":"15.11.3",
+	"server_id":"r22",
+	"room_id":"15.11.3",
 	"label":"NeurIMM Benches",
 	"type":"Room",
 	"map":"First Floor North",

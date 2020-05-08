@@ -4,7 +4,8 @@ using UnityEngine;
 [Serializable]
 public class RoomData
 {
-    public string id;
+    public string server_id;
+    public string room_id;
     public string label;
     public string map;
     public string type;

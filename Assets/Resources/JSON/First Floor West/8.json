@@ -1,6 +1,6 @@
 {
-	"db_id":"r121",
-	"id":"8",
+	"server_id":"r121",
+	"room_id":"8",
 	"label":"Stairs",
 	"type":"Room",
 	"map":"First Floor West",
