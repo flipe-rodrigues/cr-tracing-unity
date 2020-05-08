@@ -4,6 +4,6 @@
 	"label":"Library",
 	"type":"Access",
 	"map":"First Floor North",
-	"position":{"x":0,"y":-10,"z":1},
-	"dimensions":{"x":6,"y":5}
+	"position":{"x":2,"y":-10,"z":1},
+	"dimensions":{"x":4,"y":5}
 }

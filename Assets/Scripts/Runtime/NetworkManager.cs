@@ -47,7 +47,8 @@ public class NetworkManager : MonoBehaviour
 
         foreach (RoomBhv room in UserBhv.instance.rooms)
         {
-            form.AddField(room.roomData.server_id, room.isToggled.ToString());
+            Debug.Log(room.roomData.server_id + "   " + room.isToggled.ToString());
+            form.AddField(room.roomData.server_id, room.isToggled ? "1" : "0");
         }
 
         UnityWebRequest request = UnityWebRequest.Post(uri, form);
