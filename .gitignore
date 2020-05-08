@@ -10,7 +10,8 @@
 /[Mm]emoryCaptures/
 
 # Ignore text file with back-end authorization key
-*authkey.txt*
+*authkey.txt
+*authkey.txt.meta
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
