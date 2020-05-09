@@ -1,9 +1,9 @@
 {
-	"server_id":"__",
+	"server_id":"r216",
 	"room_id":"Elev5.+2",
 	"label":"Elevator",
 	"type":"Access",
-	"map":"Vivarium Satellite",
+	"map":"Second Floor North",
 	"position":{"x":44,"y":-7,"z":2},
 	"dimensions":{"x":2,"y":2}
 }
