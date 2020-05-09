@@ -4,6 +4,9 @@ using TMPro;
 
 public class UserBhv : MonoBehaviour
 {
+    // public properties
+    public bool HasChangedSinceLastSubmission;// { get; set; }
+
     // singleton instance
     public static UserBhv instance = null;
 

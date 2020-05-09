@@ -17,7 +17,7 @@ public class NetworkManager : MonoBehaviour
 
     public void OnSubmit()
     {
-        if (!_isPosting)
+        if (!_isPosting && UserBhv.instance.HasChangedSinceLastSubmission)
         {
             StartCoroutine(this.PostUserData());
         }
@@ -47,7 +47,6 @@ public class NetworkManager : MonoBehaviour
 
         foreach (RoomBhv room in UserBhv.instance.rooms)
         {
-            Debug.Log(room.roomData.server_id + "   " + room.isToggled.ToString());
             form.AddField(room.roomData.server_id, room.isToggled ? "1" : "0");
         }
 
@@ -63,10 +62,12 @@ public class NetworkManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Form upload complete! Here's the response:\n" + request.downloadHandler.text);
+            Debug.Log("Form upload complete!\nHere's the response:" + request.downloadHandler.text);
         }
 
         _isPosting = false;
+
+        UserBhv.instance.HasChangedSinceLastSubmission = false;
     }
 
     private IEnumerator GetUserData()

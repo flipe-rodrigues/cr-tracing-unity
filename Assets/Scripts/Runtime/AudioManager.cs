@@ -27,6 +27,9 @@ public class AudioManager : MonoBehaviour
     {
         _audioSource.clip = clip;
 
-        _audioSource.Play();
+        if (Time.time > .1f)
+        {
+            _audioSource.Play();
+        }
     }
 }

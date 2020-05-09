@@ -130,6 +130,8 @@ public class RoomBhv : MonoBehaviour, IToggleable
             {
                 this.isToggled = !this.isToggled;
 
+                UserBhv.instance.HasChangedSinceLastSubmission = true;
+
                 _targetImageColor = this.isToggled ? _toggledImageColor : _untoggledImageColor;
 
                 _targetFontColor = this.isToggled ? toggledFontColor : untoggledFontColor;
