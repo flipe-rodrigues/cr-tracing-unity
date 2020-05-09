@@ -5,9 +5,11 @@ public class VirtualCameraBhv : MonoBehaviour
 {
     // public fields
     [Range(.1f, 30f)]
-    public float panSpeedModifier = 10f;
+    public float panModifier = 10f;
     [Range(.1f, 30f)]
-    public float zoomSpeedModifier = 15f;
+    public float zoomModifier = 15f;
+    [Range(1f, 10f)]
+    public float zoomIncrementCap = 7.5f;
     public Vector3 boundingBoxDimensions = new Vector3(40, 20, 10);
 
     // private fields
@@ -17,7 +19,6 @@ public class VirtualCameraBhv : MonoBehaviour
     private Vector3 _targetHomePosition;
     private Vector3 _mouseDownPosition;
     private CinemachineVirtualCamera _virtualCamera;
-    private CinemachineTransposer _transposer;
     private bool _isSelected;
 
     private void Awake()
@@ -25,8 +26,6 @@ public class VirtualCameraBhv : MonoBehaviour
         _transform = this.GetComponent<Transform>();
 
         _virtualCamera = this.GetComponent<CinemachineVirtualCamera>();
-
-        _transposer = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
     }
     private void Start()
     {
@@ -83,22 +82,36 @@ public class VirtualCameraBhv : MonoBehaviour
 
     private void Pan()
     {
-        float multiplier = panSpeedModifier * Time.deltaTime;
+        float effectiveIncrement = panModifier * Time.deltaTime;
 
         Vector3 direction = _mouseDownPosition - this.GetWorldPosition(Input.mousePosition);
 
-        _followTarget.position += direction * multiplier;
+        _followTarget.position += direction * effectiveIncrement;
     }
 
     private void Zoom(float increment)
     {
-        Debug.Log(increment);
+        float clampedIncrement = this.AdaptiveZoomIncrement(increment);
 
-        float multiplier = increment * zoomSpeedModifier * Time.deltaTime;
+        float effectiveIncrement = clampedIncrement * zoomModifier * Time.deltaTime;
 
         Vector3 direction = this.GetWorldPosition(Input.mousePosition) - _transform.position;
 
-        _followTarget.position += direction * multiplier;
+        _followTarget.position += direction * effectiveIncrement;
+    }
+
+    private float AdaptiveZoomIncrement(float increment)
+    {
+        float absEffectiveIncrement = Mathf.Abs(increment * zoomModifier);
+
+        if (absEffectiveIncrement > zoomIncrementCap)
+        {
+            zoomModifier -= Mathf.Abs(absEffectiveIncrement - zoomIncrementCap);
+
+            zoomModifier = Mathf.Max(zoomModifier, 1f);
+        }
+
+        return Mathf.Clamp(increment, -1f, 1f);
     }
 
     private void OnDrawGizmos()

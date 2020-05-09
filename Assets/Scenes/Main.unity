@@ -29349,8 +29349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84432af99c68c0f4cb44d30736ff3ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeedModifier: 10
-  zoomSpeedModifier: 15
+  panModifier: 10
+  zoomModifier: 15
+  zoomIncrementCap: 7.5
   boundingBoxDimensions: {x: 20, y: 40, z: 10}
 --- !u!114 &518130410
 MonoBehaviour:
@@ -46692,8 +46693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84432af99c68c0f4cb44d30736ff3ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeedModifier: 10
-  zoomSpeedModifier: 15
+  panModifier: 10
+  zoomModifier: 15
+  zoomIncrementCap: 7.5
   boundingBoxDimensions: {x: 40, y: 20, z: 10}
 --- !u!114 &807405650
 MonoBehaviour:
@@ -58477,8 +58479,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84432af99c68c0f4cb44d30736ff3ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeedModifier: 10
-  zoomSpeedModifier: 15
+  panModifier: 10
+  zoomModifier: 15
+  zoomIncrementCap: 7.5
   boundingBoxDimensions: {x: 400, y: 200, z: 100}
 --- !u!114 &1016638686
 MonoBehaviour:
@@ -76879,8 +76882,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84432af99c68c0f4cb44d30736ff3ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeedModifier: 10
-  zoomSpeedModifier: 15
+  panModifier: 10
+  zoomModifier: 15
+  zoomIncrementCap: 7.5
   boundingBoxDimensions: {x: 10, y: 15, z: 10}
 --- !u!114 &1367115359
 MonoBehaviour:
@@ -108610,8 +108614,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84432af99c68c0f4cb44d30736ff3ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeedModifier: 10
-  zoomSpeedModifier: 15
+  panModifier: 10
+  zoomModifier: 15
+  zoomIncrementCap: 7.5
   boundingBoxDimensions: {x: 40, y: 20, z: 10}
 --- !u!114 &1929533480
 MonoBehaviour:
@@ -111287,8 +111292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84432af99c68c0f4cb44d30736ff3ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeedModifier: 10
-  zoomSpeedModifier: 15
+  panModifier: 10
+  zoomModifier: 15
+  zoomIncrementCap: 7.5
   boundingBoxDimensions: {x: 40, y: 20, z: 10}
 --- !u!114 &1967586913
 MonoBehaviour:
