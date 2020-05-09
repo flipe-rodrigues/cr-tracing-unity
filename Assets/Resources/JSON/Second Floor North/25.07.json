@@ -4,6 +4,6 @@
 	"label":"Corridor",
 	"type":"Access",
 	"map":"Second Floor North",
-	"position":{"x":23,"y":-7,"z":2},
-	"dimensions":{"x":2,"y":8}
+	"position":{"x":23,"y":-5,"z":2},
+	"dimensions":{"x":2,"y":10}
 }

@@ -7,7 +7,7 @@ public class VirtualCameraBhv : MonoBehaviour
     [Range(.1f, 30f)]
     public float panSpeedModifier = 10f;
     [Range(.1f, 30f)]
-    public float zoomSpeedModifier = 10f;
+    public float zoomSpeedModifier = 15f;
     public Vector3 boundingBoxDimensions = new Vector3(40, 20, 10);
 
     // private fields
@@ -92,6 +92,8 @@ public class VirtualCameraBhv : MonoBehaviour
 
     private void Zoom(float increment)
     {
+        Debug.Log(increment);
+
         float multiplier = increment * zoomSpeedModifier * Time.deltaTime;
 
         Vector3 direction = this.GetWorldPosition(Input.mousePosition) - _transform.position;

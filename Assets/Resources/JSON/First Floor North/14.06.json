@@ -1,9 +1,9 @@
 {
 	"server_id":"__",
-	"room_id":"16.37",
+	"room_id":"14.06",
 	"label":"Corridor",
 	"type":"Access",
 	"map":"First Floor North",
-	"position":{"x":0,"y":-4,"z":1},
-	"dimensions":{"x":10,"y":3}
+	"position":{"x":34,"y":-4,"z":1},
+	"dimensions":{"x":12,"y":3}
 }

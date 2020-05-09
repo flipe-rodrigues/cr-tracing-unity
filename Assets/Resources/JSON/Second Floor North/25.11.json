@@ -1,0 +1,9 @@
+{
+	"server_id":"__",
+	"room_id":"25.11",
+	"label":"Open lab",
+	"type":"Access",
+	"map":"Second Floor North",
+	"position":{"x":6,"y":-17,"z":2},
+	"dimensions":{"x":40,"y":2}
+}

@@ -1,0 +1,9 @@
+{
+	"server_id":"__",
+	"room_id":"18.11",
+	"label":"Corridor & stairs",
+	"type":"Access",
+	"map":"First Floor North",
+	"position":{"x":-4,"y":0,"z":1},
+	"dimensions":{"x":4,"y":15}
+}

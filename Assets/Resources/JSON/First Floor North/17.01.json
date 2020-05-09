@@ -2,8 +2,8 @@
 	"server_id":"r61",
 	"room_id":"17.01",
 	"label":"Library",
-	"type":"Access",
+	"type":"Room",
 	"map":"First Floor North",
-	"position":{"x":2,"y":-10,"z":1},
-	"dimensions":{"x":4,"y":5}
+	"position":{"x":0,"y":-10,"z":1},
+	"dimensions":{"x":6,"y":5}
 }
