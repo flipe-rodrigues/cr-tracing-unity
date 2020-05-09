@@ -214,6 +214,8 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
     private IEnumerator ChangeImageColor(float maxLerp, float lerpSpeed)
     {
+        yield return new WaitForSeconds(UnityEngine.Random.value * 2.5f);
+
         Color currentColor = _image.color;
 
         float lerp = 0;
@@ -235,6 +237,8 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
     private IEnumerator ChangeLabelColor(float maxLerp, float lerpSpeed)
     {
+        yield return new WaitForSeconds(UnityEngine.Random.value * 2.5f);
+
         Color currentColor = _label.color;
 
         float lerp = 0;
@@ -256,6 +260,8 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
     private IEnumerator ChangeLabelFontSize(float maxLerp, float lerpSpeed)
     {
+        yield return new WaitForSeconds(UnityEngine.Random.value * 2.5f);
+
         float currentSize = _label.fontSize;
 
         float lerp = 0;

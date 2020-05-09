@@ -32,7 +32,7 @@ public class MapManager : MonoBehaviour
         {
             if (i != mapIndex)
             {
-                StartCoroutine(this.Maps[i].Deselect());
+                this.Maps[i].Deselect();
             }
         }
     }

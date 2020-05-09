@@ -33,13 +33,11 @@ public class TutorialBhv : MonoBehaviour, IMap
         }
     }
 
-    public IEnumerator Deselect()
+    public void Deselect()
     {
         foreach (LogoBhv logo in _logoParts)
         {
             logo.Disable();
-
-            yield return null;
         }
     }
 

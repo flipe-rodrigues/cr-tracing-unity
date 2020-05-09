@@ -46,14 +46,12 @@ public class MapBhv : MonoBehaviour, IMap
         {
             if (!room.IsEnabled)
             {
-                //room.gameObject.SetActive(true);
-
                 room.Enable();
             }
         }
     }
 
-    public IEnumerator Deselect()
+    public void Deselect()
     {
         foreach (RoomBhv room in _rooms)
         {
@@ -61,8 +59,6 @@ public class MapBhv : MonoBehaviour, IMap
             {
                 room.Disable();
             }
-
-            yield return null;
         }
     }
 }
