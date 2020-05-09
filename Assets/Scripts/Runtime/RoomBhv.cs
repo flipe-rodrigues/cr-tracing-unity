@@ -86,7 +86,7 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         _targetFontSize = this.isToggled ? toggledFontSize : untoggledFontSize;
 
-        this.TweenTowardsTarget(1f, 1f);
+        this.TweenTowardsTarget(1f, 1f, 3f);
     }
 
     public void Disable()
@@ -99,7 +99,7 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         _targetFontSize = untoggledFontSize;
 
-        this.TweenTowardsTarget(1f, 1f);
+        this.TweenTowardsTarget(1f, 1f, 3f);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -110,7 +110,7 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         _targetFontSize = this.isToggled ? _label.fontSize : toggledFontSize;
 
-        this.TweenTowardsTarget(.5f, 1f);
+        this.TweenTowardsTarget(.5f, 1f, 0f);
 
         RoomLabelBhv.instance.SetText(roomData.label, 1f, 2.5f, toggledFontColor);
     }
@@ -140,7 +140,7 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
                 AudioManager.instance.PlayClip(this.isToggled ? toggleClip : untoggleClip);
 
-                this.TweenTowardsTarget(1f, 5f);
+                this.TweenTowardsTarget(1f, 5f, 0f);
             }
         }
     }
@@ -153,20 +153,20 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         _targetFontSize = this.isToggled ? _targetFontSize : untoggledFontSize;
 
-        this.TweenTowardsTarget(1f, 5f);
+        this.TweenTowardsTarget(1f, 5f, 0f);
 
         RoomLabelBhv.instance.SetText(roomData.label, 0f, 5f, toggledFontColor);
     }
 
-    private void TweenTowardsTarget(float maxLerp, float lerpSpeed)
+    private void TweenTowardsTarget(float maxLerp, float lerpSpeed, float phaseOffset)
     {
         StopAllCoroutines();
 
-        StartCoroutine(this.ChangeImageColor(maxLerp, lerpSpeed));
+        StartCoroutine(this.ChangeImageColor(maxLerp, lerpSpeed, phaseOffset));
 
-        StartCoroutine(this.ChangeLabelColor(maxLerp, lerpSpeed));
+        StartCoroutine(this.ChangeLabelColor(maxLerp, lerpSpeed, phaseOffset));
 
-        StartCoroutine(this.ChangeLabelFontSize(maxLerp, lerpSpeed));
+        StartCoroutine(this.ChangeLabelFontSize(maxLerp, lerpSpeed, phaseOffset));
     }
 
     private IEnumerator Flash(float speed)
@@ -212,9 +212,9 @@ public class RoomBhv : MonoBehaviour, IToggleable
         _label.color = Color.Lerp(untoggledFontColor, labelColor, maxLerp);
     }
 
-    private IEnumerator ChangeImageColor(float maxLerp, float lerpSpeed)
+    private IEnumerator ChangeImageColor(float maxLerp, float lerpSpeed, float phaseOffset)
     {
-        yield return new WaitForSeconds(UnityEngine.Random.value * 2.5f);
+        yield return new WaitForSeconds(UnityEngine.Random.value * phaseOffset);
 
         Color currentColor = _image.color;
 
@@ -235,9 +235,9 @@ public class RoomBhv : MonoBehaviour, IToggleable
         }
     }
 
-    private IEnumerator ChangeLabelColor(float maxLerp, float lerpSpeed)
+    private IEnumerator ChangeLabelColor(float maxLerp, float lerpSpeed, float phaseOffset)
     {
-        yield return new WaitForSeconds(UnityEngine.Random.value * 2.5f);
+        yield return new WaitForSeconds(UnityEngine.Random.value * phaseOffset);
 
         Color currentColor = _label.color;
 
@@ -258,9 +258,9 @@ public class RoomBhv : MonoBehaviour, IToggleable
         }
     }
 
-    private IEnumerator ChangeLabelFontSize(float maxLerp, float lerpSpeed)
+    private IEnumerator ChangeLabelFontSize(float maxLerp, float lerpSpeed, float phaseOffset)
     {
-        yield return new WaitForSeconds(UnityEngine.Random.value * 2.5f);
+        yield return new WaitForSeconds(UnityEngine.Random.value * phaseOffset);
 
         float currentSize = _label.fontSize;
 

@@ -70,7 +70,7 @@ public class VirtualCameraBhv : MonoBehaviour
 
         _virtualCamera.Priority = 1;
 
-        _followTarget.position += Vector3.back * 50;
+        _followTarget.position += Vector3.back * 25f;
     }
 
     public void Deselect()

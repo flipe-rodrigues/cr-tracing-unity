@@ -1,7 +1,7 @@
 {
 "companyName": "CR",
-"productName": "CR Contact Tracing",
-"productVersion": "1",
+"productName": "CR Tracing",
+"productVersion": "2",
 "dataUrl": "WebGL.data.unityweb",
 "wasmCodeUrl": "WebGL.wasm.code.unityweb",
 "wasmFrameworkUrl": "WebGL.wasm.framework.unityweb",
