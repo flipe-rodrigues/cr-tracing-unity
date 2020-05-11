@@ -4,9 +4,6 @@ using TMPro;
 
 public class UserBhv : MonoBehaviour
 {
-    // public properties
-    public bool HasChangedSinceLastSubmission { get; set; }
-
     // singleton instance
     public static UserBhv instance = null;
 
@@ -24,11 +21,6 @@ public class UserBhv : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        this.HasChangedSinceLastSubmission = true;
     }
 
     public void SaveUserData()

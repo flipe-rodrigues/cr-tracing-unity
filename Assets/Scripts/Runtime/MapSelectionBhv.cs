@@ -36,7 +36,7 @@ public class MapSelectionBhv : MonoBehaviour
 
         MapManager.instance.SelectMap(mapIndex);
 
-        CameraManager.instance.SelectVirtualCamera(mapIndex);
+        VirtualCameraManager.instance.SelectVirtualCamera(mapIndex);
 
         RoomLabelBhv.instance.Clear();
     }

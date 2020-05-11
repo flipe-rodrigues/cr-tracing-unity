@@ -4,12 +4,6 @@ using Cinemachine;
 public class VirtualCameraBhv : MonoBehaviour
 {
     // public fields
-    [Range(.1f, 30f)]
-    public float panModifier = 10f;
-    [Range(.1f, 30f)]
-    public float zoomModifier = 15f;
-    [Range(1f, 10f)]
-    public float zoomIncrementCap = 7.5f;
     public Vector3 boundingBoxDimensions = new Vector3(40, 20, 10);
 
     // private fields
@@ -82,7 +76,7 @@ public class VirtualCameraBhv : MonoBehaviour
 
     private void Pan()
     {
-        float effectiveIncrement = panModifier * Time.deltaTime;
+        float effectiveIncrement = VirtualCameraManager.instance.panMultiplier * Time.deltaTime;
 
         Vector3 direction = _mouseDownPosition - this.GetWorldPosition(Input.mousePosition);
 
@@ -93,7 +87,7 @@ public class VirtualCameraBhv : MonoBehaviour
     {
         float clampedIncrement = this.AdaptiveZoomIncrement(increment);
 
-        float effectiveIncrement = clampedIncrement * zoomModifier * Time.deltaTime;
+        float effectiveIncrement = clampedIncrement * VirtualCameraManager.instance.zoomMultiplier * Time.deltaTime;
 
         Vector3 direction = this.GetWorldPosition(Input.mousePosition) - _transform.position;
 
@@ -102,13 +96,19 @@ public class VirtualCameraBhv : MonoBehaviour
 
     private float AdaptiveZoomIncrement(float increment)
     {
-        float absEffectiveIncrement = Mathf.Abs(increment * zoomModifier);
+        float absEffectiveIncrement = Mathf.Abs(increment * VirtualCameraManager.instance.zoomMultiplier);
 
-        if (absEffectiveIncrement > zoomIncrementCap)
+        if (absEffectiveIncrement > VirtualCameraManager.instance.zoomIncrementCap)
         {
-            zoomModifier -= Mathf.Abs(absEffectiveIncrement - zoomIncrementCap);
+            VirtualCameraManager.instance.zoomMultiplier -= 
+                Mathf.Abs(absEffectiveIncrement - VirtualCameraManager.instance.zoomIncrementCap);
 
-            zoomModifier = Mathf.Max(zoomModifier, 1f);
+            VirtualCameraManager.instance.zoomMultiplier = 
+                Mathf.Max(VirtualCameraManager.instance.zoomMultiplier, 1f);
+        }
+        else
+        {
+            VirtualCameraManager.instance.zoomMultiplier += Time.deltaTime;
         }
 
         return Mathf.Clamp(increment, -1f, 1f);
@@ -130,7 +130,7 @@ public class VirtualCameraBhv : MonoBehaviour
 
     private Vector3 GetWorldPosition(Vector3 point)
     {
-        Ray mouseRay = CameraManager.mainCamera.ScreenPointToRay(point);
+        Ray mouseRay = VirtualCameraManager.mainCamera.ScreenPointToRay(point);
 
         Plane groundPlane = new Plane(Vector3.forward, new Vector3(0, 0, _followTarget.position.z));
 

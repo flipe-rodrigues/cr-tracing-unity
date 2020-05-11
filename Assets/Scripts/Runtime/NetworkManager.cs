@@ -9,15 +9,28 @@ public class NetworkManager : MonoBehaviour
 {
     // public fields
     public string uri;
-    public TextAsset authKeyFile;
+    public string authKeyFileName;
 
     // private fields
+    private string _authKey;
     private bool _isPosting;
     private bool _isGetting;
 
+    private void Start()
+    {
+        this.LoadAuthenticationKey();
+    }
+
+    private void LoadAuthenticationKey()
+    {
+        TextAsset authenticationKeyFile = Resources.Load<TextAsset>(authKeyFileName);
+
+        _authKey = authenticationKeyFile.text;
+    }
+
     public void OnSubmit()
     {
-        if (!_isPosting && UserBhv.instance.HasChangedSinceLastSubmission)
+        if (!_isPosting)
         {
             StartCoroutine(this.PostUserData());
         }
@@ -33,6 +46,8 @@ public class NetworkManager : MonoBehaviour
 
     private IEnumerator PostUserData()
     {
+        SubmitButtonBhv.instance.SetTextToTransition();
+
         _isPosting = true;
 
         WWWForm form = new WWWForm();
@@ -52,7 +67,7 @@ public class NetworkManager : MonoBehaviour
 
         UnityWebRequest request = UnityWebRequest.Post(uri, form);
 
-        request.SetRequestHeader("AUTHORIZATION", "Basic " + authKeyFile.text);
+        request.SetRequestHeader("AUTHORIZATION", _authKey);
 
         yield return request.SendWebRequest();
 
@@ -67,7 +82,9 @@ public class NetworkManager : MonoBehaviour
 
         _isPosting = false;
 
-        UserBhv.instance.HasChangedSinceLastSubmission = false;
+        SubmitButtonBhv.instance.DisableButton();
+
+        SubmitButtonBhv.instance.SetTextToDisabled();
     }
 
     private IEnumerator GetUserData()
@@ -76,7 +93,7 @@ public class NetworkManager : MonoBehaviour
 
         UnityWebRequest request = UnityWebRequest.Get(uri);
 
-        request.SetRequestHeader("AUTHORIZATION", authKeyFile.text);
+        request.SetRequestHeader("AUTHORIZATION", _authKey);
 
         yield return request.SendWebRequest();
 

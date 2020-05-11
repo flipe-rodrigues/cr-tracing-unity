@@ -66,3 +66,34 @@ for ii = 1 : n_levels
         server_id = server_id + 1;
     end
 end
+
+%% back-end hack
+savefile = 'backendhack.txt';
+savefid = fopen(savefile,'w');
+
+str = '$stmt->bind_param("s", $user,';
+for ii = 0 : server_id - 1
+    str = [str,'$r',num2str(ii),','];
+    str = insertAfter(str,'"s','i');
+end
+str = [str(1:end-1),');'];
+fprintf(savefid,str);
+fprintf(savefid,'\n');
+
+str = '$stmt=$conn->prepare("INSERT INTO traces (user,) VALUES (?)")';
+for ii = server_id - 1 : -1 : 0
+    r_substr = sprintf('r%i,',ii);
+    str = insertAfter(str,'user,',r_substr);
+    if (ii == server_id - 1) 
+        str = strrep(str,r_substr,r_substr(1:end-1));
+    end
+    str = insertBefore(str,')"',',?');
+end
+fprintf(savefid,str);
+fprintf(savefid,';\n');
+
+for ii = 0 : server_id - 1
+    fprintf(savefid,'$r%i=$_POST[''r%i''];\n',ii,ii);
+end
+
+fclose(savefid);

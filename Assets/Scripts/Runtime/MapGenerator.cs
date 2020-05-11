@@ -86,14 +86,14 @@ public class MapGenerator : MonoBehaviour
 
         mapObj.transform.parent = this.transform;
 
-        this.InstantiateRooms(mapRoomData, mapObj.transform);
+        this.InstantiateRoomParent(mapRoomData, mapObj.transform);
         
         this.InstantiateVirtualCamera(mapObj.transform);
 
         mapObj.transform.localScale = new Vector3(1f, 1f, -100f);
     }
 
-    private void InstantiateRooms(List<RoomData> mapRoomData, Transform mapTransform)
+    private void InstantiateRoomParent(List<RoomData> mapRoomData, Transform mapTransform)
     {
         GameObject roomParentObj = new GameObject("Rooms");
 

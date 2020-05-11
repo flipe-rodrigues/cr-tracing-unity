@@ -12,14 +12,14 @@ public class RoomBhv : MonoBehaviour, IToggleable
     public bool IsEnabled { get { return _graphicsRaycaster.enabled; } }
 
     // public fields
+    public bool isToggled;
     [Header("Room Data:")]
     public RoomData roomData;
-    public bool isToggled;
     [Header("Image Settings:")]
     public RoomType roomType;
     public List<RoomTypeColors> roomTypeColors;
     [Range(0f, 1f)]
-    public float disabledAlpha = .75f;
+    public float disabledAlpha = 0f;
     [Header("Label Settings:")]
     public Color toggledFontColor;
     public Color untoggledFontColor;
@@ -86,7 +86,9 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         _targetFontSize = this.isToggled ? toggledFontSize : untoggledFontSize;
 
-        this.TweenTowardsTarget(1f, 1f, 3f);
+        float phaseOffset = UnityEngine.Random.value * 2.5f;
+
+        this.TweenTowardsTarget(1f, 1f, phaseOffset);
     }
 
     public void Disable()
@@ -99,7 +101,9 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         _targetFontSize = untoggledFontSize;
 
-        this.TweenTowardsTarget(1f, 1f, 3f);
+        float phaseOffset = UnityEngine.Random.value * 2.5f;
+
+        this.TweenTowardsTarget(1f, 1f, phaseOffset);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -128,17 +132,13 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
             else if (eventData.clickCount == 2)
             {
-                this.isToggled = !this.isToggled;
-
-                UserBhv.instance.HasChangedSinceLastSubmission = true;
+                this.Toggle();
 
                 _targetImageColor = this.isToggled ? _toggledImageColor : _untoggledImageColor;
 
                 _targetFontColor = this.isToggled ? toggledFontColor : untoggledFontColor;
 
                 _targetFontSize = this.isToggled ? toggledFontSize : untoggledFontSize;
-
-                AudioManager.instance.PlayClip(this.isToggled ? toggleClip : untoggleClip);
 
                 this.TweenTowardsTarget(1f, 5f, 0f);
             }
@@ -158,37 +158,48 @@ public class RoomBhv : MonoBehaviour, IToggleable
         RoomLabelBhv.instance.SetText(roomData.label, 0f, 5f, toggledFontColor);
     }
 
-    private void TweenTowardsTarget(float maxLerp, float lerpSpeed, float phaseOffset)
+    private void Toggle()
+    {
+        this.isToggled = !this.isToggled;
+
+        SubmitButtonBhv.instance.EnableButton();
+
+        SubmitButtonBhv.instance.SetTextToEnabled();
+
+        AudioManager.instance.PlayClip(this.isToggled ? toggleClip : untoggleClip);
+    }
+
+    private void TweenTowardsTarget(float lerpCeil, float lerpSpeed, float phaseOffset)
     {
         StopAllCoroutines();
 
-        StartCoroutine(this.ChangeImageColor(maxLerp, lerpSpeed, phaseOffset));
+        StartCoroutine(this.LerpImageColor(lerpCeil, lerpSpeed, phaseOffset));
 
-        StartCoroutine(this.ChangeLabelColor(maxLerp, lerpSpeed, phaseOffset));
+        StartCoroutine(this.LerpLabelColor(lerpCeil, lerpSpeed, phaseOffset));
 
-        StartCoroutine(this.ChangeLabelFontSize(maxLerp, lerpSpeed, phaseOffset));
+        StartCoroutine(this.LerpLabelFontSize(lerpCeil, lerpSpeed, phaseOffset));
     }
 
-    private IEnumerator Flash(float speed)
+    private IEnumerator Flash(float lerpSpeed)
     {
         Color imageColor = _image.color;
 
         Color labelColor = _label.color;
 
-        float lerp = 0;
+        float interpolant = 0;
 
-        while (lerp < 1)
+        while (interpolant < 1)
         {
-            _image.color = Color.Lerp(imageColor, _untoggledImageColor, lerp);
+            interpolant = Mathf.Clamp01(interpolant + Time.deltaTime * lerpSpeed);
 
-            _label.color = Color.Lerp(labelColor, untoggledFontColor, lerp);
+            _image.color = Color.Lerp(imageColor, _untoggledImageColor, interpolant);
 
-            lerp = Mathf.Clamp01(lerp + Time.deltaTime * speed);
+            _label.color = Color.Lerp(labelColor, untoggledFontColor, interpolant);
 
             yield return null;
         }
 
-        lerp = 0;
+        interpolant = 0;
 
         float maxLerp = this.isToggled ? 1f : .5f;
 
@@ -196,88 +207,69 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         labelColor = this.isToggled ? toggledFontColor : untoggledFontColor;
 
-        while (lerp < maxLerp)
+        while (interpolant < maxLerp)
         {
-            _image.color = Color.Lerp(_untoggledImageColor, imageColor, lerp);
+            interpolant = Mathf.Clamp01(interpolant + Time.deltaTime * lerpSpeed);
 
-            _label.color = Color.Lerp(untoggledFontColor, labelColor, lerp);
+            _image.color = Color.Lerp(_untoggledImageColor, imageColor, interpolant);
 
-            lerp = Mathf.Clamp01(lerp + Time.deltaTime * speed);
+            _label.color = Color.Lerp(untoggledFontColor, labelColor, interpolant);
 
             yield return null;
         }
-
-        _image.color = Color.Lerp(_untoggledImageColor, imageColor, maxLerp);
-
-        _label.color = Color.Lerp(untoggledFontColor, labelColor, maxLerp);
     }
 
-    private IEnumerator ChangeImageColor(float maxLerp, float lerpSpeed, float phaseOffset)
+    private IEnumerator LerpImageColor(float lerpCeil, float lerpSpeed, float phaseOffset)
     {
-        yield return new WaitForSeconds(UnityEngine.Random.value * phaseOffset);
+        yield return new WaitForSeconds(phaseOffset);
 
         Color currentColor = _image.color;
 
-        float lerp = 0;
+        float interpolant = 0;
 
-        while (lerp < maxLerp)
+        while (interpolant < lerpCeil)
         {
-            _image.color = Color.Lerp(currentColor, _targetImageColor, lerp);
+            interpolant = Mathf.Clamp01(interpolant + Time.deltaTime * lerpSpeed);
 
-            lerp = Mathf.Clamp01(lerp + Time.deltaTime * lerpSpeed);
+            _image.color = Color.Lerp(currentColor, _targetImageColor, interpolant);
 
             yield return null;
         }
-
-        if (maxLerp == 1f)
-        {
-            _image.color = _targetImageColor;
-        }
     }
 
-    private IEnumerator ChangeLabelColor(float maxLerp, float lerpSpeed, float phaseOffset)
+    private IEnumerator LerpLabelColor(float lerpCeil, float lerpSpeed, float phaseOffset)
     {
-        yield return new WaitForSeconds(UnityEngine.Random.value * phaseOffset);
+        yield return new WaitForSeconds(phaseOffset);
 
         Color currentColor = _label.color;
 
-        float lerp = 0;
+        float interpolant = 0;
 
-        while (lerp < maxLerp)
+        while (interpolant < lerpCeil)
         {
-            _label.color = Color.Lerp(currentColor, _targetFontColor, lerp);
+            interpolant = Mathf.Clamp01(interpolant + Time.deltaTime * lerpSpeed);
 
-            lerp = Mathf.Clamp01(lerp + Time.deltaTime * lerpSpeed);
+            _label.color = Color.Lerp(currentColor, _targetFontColor, interpolant);
 
             yield return null;
-        }
-
-        if (maxLerp == 1f)
-        {
-            _label.color = _targetFontColor;
         }
     }
 
-    private IEnumerator ChangeLabelFontSize(float maxLerp, float lerpSpeed, float phaseOffset)
+    private IEnumerator LerpLabelFontSize(float lerpCeil, float lerpSpeed, float phaseOffset)
     {
-        yield return new WaitForSeconds(UnityEngine.Random.value * phaseOffset);
+        yield return new WaitForSeconds(phaseOffset);
 
         float currentSize = _label.fontSize;
 
-        float lerp = 0;
+        float interpolant = 0;
 
-        while (lerp < maxLerp)
+        while (interpolant < lerpCeil)
         {
-            _label.fontSize = Mathf.Lerp(currentSize, _targetFontSize, lerp);
+            interpolant = Mathf.Clamp01(interpolant + Time.deltaTime * lerpSpeed);
 
-            lerp = Mathf.Clamp01(lerp + Time.deltaTime * lerpSpeed);
+            _label.fontSize = Mathf.Lerp(currentSize, _targetFontSize, interpolant);
 
             yield return null;
-        }
-
-        if (maxLerp == 1f)
-        {
-            _label.fontSize = _targetFontSize;
         }
     }
 }

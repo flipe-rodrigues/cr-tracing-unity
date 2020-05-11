@@ -7,7 +7,7 @@ public class MapBhv : MonoBehaviour, IMap
     public bool IsSelected { get; private set; }
 
     // public fields
-    public Color mapColor;
+    public Color mapBackgroundColor;
 
     // private fields
     private RoomBhv[] _rooms;
@@ -29,7 +29,7 @@ public class MapBhv : MonoBehaviour, IMap
 
     public Color GetColor()
     {
-        return this.mapColor;
+        return this.mapBackgroundColor;
     }
 
     private void LogRooms()
@@ -60,5 +60,23 @@ public class MapBhv : MonoBehaviour, IMap
                 room.Disable();
             }
         }
+    }
+
+    private IEnumerator LerpTowardsAlpha(float targetAlpha, float lerpSpeed)
+    {
+        //float currentAlpha = _canvasGroup.alpha;
+
+        //float interpolant = 0;
+
+        //while (interpolant < 1)
+        //{
+        //    interpolant = Mathf.Clamp01(interpolant + Time.deltaTime * lerpSpeed);
+
+        //    _canvasGroup.alpha = Mathf.Lerp(currentAlpha, targetAlpha, interpolant);
+
+        //    yield return null;
+        //}
+
+        yield return null;
     }
 }
