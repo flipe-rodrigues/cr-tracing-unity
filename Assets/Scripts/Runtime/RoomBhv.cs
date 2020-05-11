@@ -164,7 +164,7 @@ public class RoomBhv : MonoBehaviour, IToggleable
 
         SubmitButtonBhv.instance.EnableButton();
 
-        SubmitButtonBhv.instance.SetTextToEnabled();
+        SubmitButtonBhv.instance.SetToIdle();
 
         AudioManager.instance.PlayClip(this.isToggled ? toggleClip : untoggleClip);
     }

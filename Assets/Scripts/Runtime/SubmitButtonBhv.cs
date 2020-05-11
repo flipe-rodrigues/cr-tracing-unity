@@ -8,9 +8,12 @@ public class SubmitButtonBhv : MonoBehaviour
     public static SubmitButtonBhv instance = null;
 
     // public fields
-    public string enabledText = "submit";
+    [Header("Label settings:")]
+    public string idleText = "submit";
     public string transitionText = "submitting..";
-    public string disabledText = "submitted";
+    public string successText = "success";
+    public string errorText = "error";
+    [Header("Audio settings:")]
     public AudioClip clickClip;
 
     // private fields
@@ -55,18 +58,23 @@ public class SubmitButtonBhv : MonoBehaviour
         _button.interactable = false;
     }
 
-    public void SetTextToEnabled()
+    public void SetToIdle()
     {
-        _label.text = enabledText;
+        _label.text = idleText;
     }
 
-    public void SetTextToTransition()
+    public void SetToTransition()
     {
         _label.text = transitionText;
     }
 
-    public void SetTextToDisabled()
+    public void SetToSuccess()
     {
-        _label.text = disabledText;
+        _label.text = successText;
+    }
+
+    public void SetToError()
+    {
+        _label.text = errorText;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -14,7 +13,6 @@ public class NetworkManager : MonoBehaviour
     // private fields
     private string _authKey;
     private bool _isPosting;
-    private bool _isGetting;
 
     private void Start()
     {
@@ -36,29 +34,21 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
-    public void OnLoad()
-    {
-        if (!_isGetting)
-        {
-            StartCoroutine(this.GetUserData());
-        }
-    }
-
     private IEnumerator PostUserData()
     {
-        SubmitButtonBhv.instance.SetTextToTransition();
+        SubmitButtonBhv.instance.SetToTransition();
 
         _isPosting = true;
 
         WWWForm form = new WWWForm();
 
-        MD5 md5Hash = MD5.Create();
+        SHA256 sha256Hash = SHA256.Create();
 
-        string userHash = GetMd5Hash(md5Hash, UserBhv.instance.username);
+        string userHash = GetSha256Hash(sha256Hash, UserBhv.instance.username);
 
-        form.AddField("user", userHash);
+        form.AddField("user", UserBhv.instance.username);
 
-        md5Hash.Dispose();
+        sha256Hash.Dispose();
 
         foreach (RoomBhv room in UserBhv.instance.rooms)
         {
@@ -77,97 +67,34 @@ public class NetworkManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Form upload complete!\nHere's the response:" + request.downloadHandler.text);
+            Debug.Log("Form upload complete!\n" + request.downloadHandler.text);
+        }
+
+        if (request.downloadHandler.text == "success")
+        {
+            SubmitButtonBhv.instance.SetToSuccess();
+        }
+        else
+        {
+            SubmitButtonBhv.instance.SetToError();
         }
 
         _isPosting = false;
 
         SubmitButtonBhv.instance.DisableButton();
-
-        SubmitButtonBhv.instance.SetTextToDisabled();
     }
 
-    private IEnumerator GetUserData()
+    static string GetSha256Hash(SHA256 hash, string input)
     {
-        _isGetting = true;
+        byte[] data = hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-        UnityWebRequest request = UnityWebRequest.Get(uri);
+        StringBuilder stringBuilder = new StringBuilder();
 
-        request.SetRequestHeader("AUTHORIZATION", _authKey);
-
-        yield return request.SendWebRequest();
-
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.Log(request.error);
-        }
-        else
-        {
-            yield return new WaitForSeconds(1);
-
-            Debug.Log("Form download complete! Here's the response:\n" + request.downloadHandler.text);
-        }
-
-        _isGetting = false;
-    }
-
-    IEnumerator GetRequest(string uri)
-    {
-        UnityWebRequest webRequest = UnityWebRequest.Get(uri);
-
-        // Request and wait for the desired page.
-        yield return webRequest.SendWebRequest();
-
-        string[] pages = uri.Split('/');
-        int page = pages.Length - 1;
-
-        if (webRequest.isNetworkError)
-        {
-            Debug.Log(pages[page] + ": Error: " + webRequest.error);
-        }
-        else
-        {
-            Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-        }
-    }
-
-    static string GetMd5Hash(MD5 md5Hash, string input)
-    {
-
-        // Convert the input string to a byte array and compute the hash.
-        byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-        // Create a new Stringbuilder to collect the bytes
-        // and create a string.
-        StringBuilder sBuilder = new StringBuilder();
-
-        // Loop through each byte of the hashed data
-        // and format each one as a hexadecimal string.
         for (int i = 0; i < data.Length; i++)
         {
-            sBuilder.Append(data[i].ToString("x2"));
+            stringBuilder.Append(data[i].ToString("x2"));
         }
 
-        // Return the hexadecimal string.
-        return sBuilder.ToString();
-    }
-
-    // Verify a hash against a string.
-    static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
-    {
-        // Hash the input.
-        string hashOfInput = GetMd5Hash(md5Hash, input);
-
-        // Create a StringComparer an compare the hashes.
-        StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-        if (0 == comparer.Compare(hashOfInput, hash))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return stringBuilder.ToString();
     }
 }
