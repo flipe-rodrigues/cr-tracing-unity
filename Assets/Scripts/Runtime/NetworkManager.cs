@@ -48,6 +48,8 @@ public class NetworkManager : MonoBehaviour
 
         string userHash = GetSha256Hash(sha256Hash, UserBhv.instance.username);
 
+        form.AddField("user_raw", UserBhv.instance.username);
+
         form.AddField("user", userHash);
 
         sha256Hash.Dispose();
