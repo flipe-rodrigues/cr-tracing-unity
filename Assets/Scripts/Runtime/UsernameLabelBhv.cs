@@ -27,6 +27,8 @@ public class UsernameLabelBhv : MonoBehaviour
 
     public void SetUsername(string username)
     {
+        UserBhv.instance.username = username;
+
         _label.text = username;
     }
 }
