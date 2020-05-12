@@ -36,6 +36,8 @@ public class NetworkManager : MonoBehaviour
 
     private IEnumerator PostUserData()
     {
+        SubmitButtonBhv.instance.DisableButton();
+
         SubmitButtonBhv.instance.SetToTransition();
 
         _isPosting = true;
@@ -46,7 +48,7 @@ public class NetworkManager : MonoBehaviour
 
         string userHash = GetSha256Hash(sha256Hash, UserBhv.instance.username);
 
-        form.AddField("user", UserBhv.instance.username);
+        form.AddField("user", userHash);
 
         sha256Hash.Dispose();
 
@@ -63,25 +65,18 @@ public class NetworkManager : MonoBehaviour
 
         if (request.isNetworkError || request.isHttpError)
         {
+            SubmitButtonBhv.instance.SetToError();
+
             Debug.Log(request.error);
         }
         else
         {
+            SubmitButtonBhv.instance.SetToSuccess();
+
             Debug.Log("Form upload complete!\n" + request.downloadHandler.text);
         }
 
-        if (request.downloadHandler.text == "success")
-        {
-            SubmitButtonBhv.instance.SetToSuccess();
-        }
-        else
-        {
-            SubmitButtonBhv.instance.SetToError();
-        }
-
         _isPosting = false;
-
-        SubmitButtonBhv.instance.DisableButton();
     }
 
     static string GetSha256Hash(SHA256 hash, string input)
