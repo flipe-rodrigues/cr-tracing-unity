@@ -61,22 +61,4 @@ public class MapBhv : MonoBehaviour, IMap
             }
         }
     }
-
-    private IEnumerator LerpTowardsAlpha(float targetAlpha, float lerpSpeed)
-    {
-        //float currentAlpha = _canvasGroup.alpha;
-
-        //float interpolant = 0;
-
-        //while (interpolant < 1)
-        //{
-        //    interpolant = Mathf.Clamp01(interpolant + Time.deltaTime * lerpSpeed);
-
-        //    _canvasGroup.alpha = Mathf.Lerp(currentAlpha, targetAlpha, interpolant);
-
-        //    yield return null;
-        //}
-
-        yield return null;
-    }
 }

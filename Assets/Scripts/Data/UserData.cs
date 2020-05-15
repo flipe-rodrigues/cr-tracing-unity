@@ -6,6 +6,7 @@ public class UserData
 {
     public string username;
     public string date;
+    public int mapIndex;
     public List<string> roomIds;
     public List<bool> roomToggleStates;
 
@@ -14,6 +15,8 @@ public class UserData
         this.username = user.username;
 
         this.date = DateTime.Now.ToString("dd/MM/yyyy");
+
+        this.mapIndex = user.mapDropdown.value;
 
         this.roomIds = new List<string>();
 

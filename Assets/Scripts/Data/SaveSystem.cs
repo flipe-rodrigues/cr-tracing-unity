@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
 public static class SaveSystem
 {
@@ -15,15 +13,11 @@ public static class SaveSystem
     {
         UserData data = new UserData(user);
 
-        // MD5 cript
-
         BinaryFormatter formatter = new BinaryFormatter();
 
         FileStream stream = new FileStream(saveFilePath, FileMode.Create);
 
         formatter.Serialize(stream, data);
-
-        //Debug.Log(stream.);
 
         stream.Close();
     }
@@ -48,5 +42,23 @@ public static class SaveSystem
 
             return null;
         }
+    }
+
+    public static void SavePlayerPrefs(UserBhv user)
+    {
+        UserData data = new UserData(user);
+
+        string dataString = JsonUtility.ToJson(data);
+
+        PlayerPrefs.SetString("userData", dataString);
+    }
+
+    public static UserData LoadPlayerPrefs()
+    {
+        string dataString = PlayerPrefs.GetString("userData");
+
+        UserData data = JsonUtility.FromJson<UserData>(dataString);
+
+        return data;
     }
 }

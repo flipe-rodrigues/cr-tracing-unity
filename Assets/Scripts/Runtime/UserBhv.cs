@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -9,6 +10,8 @@ public class UserBhv : MonoBehaviour
 
     // public fields
     public string username;
+    public bool loadPlayerPrefsAtStart;
+    public TMP_Dropdown mapDropdown;
     public List<RoomBhv> rooms;
 
     private void Awake()
@@ -23,22 +26,33 @@ public class UserBhv : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("userData") && this.loadPlayerPrefsAtStart)
+        {
+            this.LoadUserData();
+        }
+    }
+
     public void SaveUserData()
     {
-        SaveSystem.SaveUserData(this);
+        SaveSystem.SavePlayerPrefs(this);
     }
 
     public void LoadUserData()
     {
-        UserData data = SaveSystem.LoadUserData();
+        UserData data = SaveSystem.LoadPlayerPrefs();
 
-        this.username = data.username;
+        string todayString = DateTime.Now.ToString("dd/MM/yyyy");
 
-        for (int i = 0; i < data.roomIds.Count; i++)
+        if (data.date == todayString)
         {
-            this.rooms.Find(r => r.roomData.room_id == data.roomIds[i]).isToggled = data.roomToggleStates[i];
-
-            this.rooms.Find(r => r.roomData.room_id == data.roomIds[i]).Enable();
+            for (int i = 0; i < data.roomIds.Count; i++)
+            {
+                this.rooms.Find(r => r.roomData.room_id == data.roomIds[i]).isToggled = data.roomToggleStates[i];
+            }
         }
+
+        this.mapDropdown.value = data.mapIndex;
     }
 }
